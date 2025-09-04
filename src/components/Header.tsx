@@ -11,7 +11,7 @@ export default function Header() {
 
   const isHome = pathname === "/";
   const isBlogs = pathname.startsWith("/blogs");
-  const isTeam = pathname.startsWith("/equipe"); // ⚠️ change si ton slug est différent
+  const isTeam = pathname.startsWith("/equipe"); // ← adapte si ton chemin diffère
 
   const baseLink =
     "text-base font-medium transition hover:text-[#1565c0] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#1565c0]";
@@ -24,20 +24,17 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3" aria-label="Accueil">
             <Image
-              src="/images/logo-qera.jpeg"   // ← Mets l'extension qui correspond à ton fichier (ex: .png)
+              src="/images/logo-qera.jpeg"
               alt="Qera"
               width={140}
               height={36}
-              className="h-15 w-auto"          // hauteur visuelle du logo
+              className="h-15 w-auto"
               priority
             />
           </Link>
 
           {/* Desktop nav */}
-          <nav
-            className="hidden md:flex items-center gap-10"
-            aria-label="Navigation principale"
-          >
+          <nav className="hidden md:flex items-center gap-10" aria-label="Navigation principale">
             <Link
               href="/"
               className="rounded-full bg-[#1565c0] px-5 py-2 text-sm font-semibold text-white shadow-sm transition hover:opacity-95 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#1565c0]"
@@ -55,7 +52,7 @@ export default function Header() {
             </Link>
 
             <Link
-              href="/equipe" // ← Ajuste si ta page équipe a un autre chemin
+              href="/equipe"
               className={`${baseLink} ${isTeam ? activeLink : ""}`}
               aria-current={isTeam ? "page" : undefined}
             >
@@ -65,22 +62,27 @@ export default function Header() {
 
           {/* Right side: social + burger */}
           <div className="flex items-center gap-2">
+            {/* LinkedIn */}
             <a
-              href="#"
-              aria-label="Facebook"
+              href="https://www.linkedin.com/company/qerapp"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
               className="grid size-9 place-items-center rounded-full bg-gray-100 transition hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#1565c0]"
             >
-              {/* Facebook SVG */}
               <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" className="text-black">
-                <path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2v-3h2v-2.3c0-2 1.2-3.1 3-3.1.9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2V12h2.3l-.4 3h-1.9v7A10 10 0 0 0 22 12z" />
+                <path d="M4.98 3.5C4.98 4.6 4.1 5.5 3 5.5S1 4.6 1 3.5 1.9 1.5 3 1.5s1.98.9 1.98 2zm.02 4H1V21h4V7.5zm7.5 0H9v13.5h4V14c0-2.2 3-2.4 3 0v7.5h4V13c0-4.7-5-4.5-6.5-2.2V7.5z" />
               </svg>
             </a>
+
+            {/* Instagram */}
             <a
-              href="#"
+              href="https://www.instagram.com/qera_app?igsh=aHVvb3IyanIzdDNw"
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label="Instagram"
               className="grid size-9 place-items-center rounded-full bg-gray-100 transition hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#1565c0]"
             >
-              {/* Instagram SVG */}
               <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" className="text-black">
                 <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5a5.5 5.5 0 1 1 0 11a5.5 5.5 0 0 1 0-11zm0 2a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7zM18 6.5a1 1 0 1 1-2 0a1 1 0 0 1 2 0z" />
               </svg>
@@ -122,7 +124,7 @@ export default function Header() {
                 Qera blogs
               </Link>
               <Link
-                href="/equipe" // ← Ajuste si nécessaire
+                href="/equipe"
                 onClick={() => setOpen(false)}
                 className="py-2 text-base font-medium hover:text-[#1565c0]"
                 aria-current={isTeam ? "page" : undefined}
