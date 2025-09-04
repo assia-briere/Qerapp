@@ -38,4 +38,6 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
-next-env.d.ts
+git add -f next-env.d.ts
+git commit -m "fix: track next-env.d.ts"
+
