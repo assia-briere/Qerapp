@@ -1,3 +1,5 @@
+// app/page.tsx
+
 "use client";
 
 import React from "react";
@@ -11,24 +13,21 @@ const WAITLIST_URL =
 export default function Page() {
   return (
     <main>
-      {/* Hero */}
+      {/* HERO SIMPLIFIÉ */}
       <section className="relative">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="grid min-h-[70vh] grid-cols-1 items-center gap-10 py-16 md:grid-cols-2">
-            {/* Colonne texte */}
             <div>
               <h1 className="mt-5 text-4xl font-black leading-tight tracking-tight text-black sm:text-5xl">
-                Éclairez vos achats.
+                Qera, l’application simple pour mieux choisir vos produits.
               </h1>
-
               <p className="mt-4 max-w-xl text-base leading-relaxed text-black/80">
-                Qera vous aide à comparer intelligemment les produits pour respecter votre
-                <span className="mx-1 font-semibold text-[#1565c0]">budget</span>,
-                protéger votre <span className="mx-1 font-semibold text-[#1565c0]">santé</span>
-                et tenir compte de vos
-                <span className="ml-1 font-semibold text-[#1565c0]">allergies</span>.
+                Comparez en un clin d’œil selon vos priorités :
+                <span className="font-semibold text-[#1565c0]">santé</span>,
+                <span className="font-semibold text-[#1565c0]">budget</span>,
+                <span className="font-semibold text-[#1565c0]">allergies</span>.
+                Prenez une photo, Qera vous guide.
               </p>
-
               <div className="mt-8 flex items-center gap-3">
                 <a
                   href={WAITLIST_URL}
@@ -38,11 +37,8 @@ export default function Page() {
                 >
                   Être parmi les premiers
                 </a>
-
               </div>
             </div>
-
-            {/* Colonne visuel / logo */}
             <div className="relative mx-auto h-[260px] w-[260px] md:h-[340px] md:w-[340px]">
               <Image
                 src="/images/test1.png"
@@ -51,27 +47,20 @@ export default function Page() {
                 sizes="(max-width: 900px) 360px, 340px"
                 className="object-contain"
                 priority
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement | null;
-                  if (target) target.style.display = "none";
-                }}
               />
             </div>
           </div>
         </div>
       </section>
 
+      {/* SECTIONS SEO */}
       <PourquoiQera />
-
       <SimpleRapideIntuitif
         imageSrc="/images/imageQera.png"
         imageMaxWidth="max-w-md md:max-w-lg lg:max-w-xl"
         aspect="aspect-[5/4]"
         sizes="(max-width:768px) 90vw, 520px"
       />
-
-      {/* Modal supprimé */}
     </main>
   );
 }
-

@@ -1,19 +1,16 @@
+// app/components/SimpleRapideIntuitif.tsx
+
+"use client";
+
 import React from "react";
 import Image from "next/image";
 
-/**
- * 2 modes (ratio OU width/height) — cartes centrées
- */
 type Props = {
   imageSrc?: string;
   imageAlt?: string;
-
-  // Mode ratio (par défaut)
   imageMaxWidth?: string;
   aspect?: string;
   sizes?: string;
-
-  // Mode width/height (legacy)
   imgWidth?: number;
   imgHeight?: number;
   imageContainerClassName?: string;
@@ -22,13 +19,9 @@ type Props = {
 export default function SimpleRapideIntuitif({
   imageSrc = "/images/imageQera.png",
   imageAlt = "Aperçu de l'application Qera",
-
-  // ratio par défaut
   imageMaxWidth = "max-w-md md:max-w-lg lg:max-w-xl",
   aspect = "aspect-[5/4]",
   sizes = "(max-width:768px) 90vw, 520px",
-
-  // legacy
   imgWidth,
   imgHeight,
   imageContainerClassName,
@@ -40,12 +33,10 @@ export default function SimpleRapideIntuitif({
     <section className="py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <h2 className="text-3xl font-black tracking-tight text-black sm:text-4xl">
-          Simple, rapide, <span className="text-[#1565c0]">intuitif</span>
+          Qera vous aide à faire les bons choix au quotidien, selon vos besoins.
         </h2>
 
-        {/* cartes au centre : items-center sur le grid */}
         <div className="mt-8 grid gap-10 md:grid-cols-2 md:items-center">
-          {/* Image à gauche */}
           <div className="relative rounded-2xl ring-1 ring-inset ring-[#1565c0]/15 bg-white p-4 md:p-6">
             <div className={`relative mx-auto w-full ${containerWidth} ${useLegacy ? "" : aspect}`}>
               {useLegacy ? (
@@ -71,7 +62,6 @@ export default function SimpleRapideIntuitif({
             </div>
           </div>
 
-          {/* Cartes fonctionnalités : groupées & centrées */}
           <div className="grid gap-5 place-self-center w-full max-w-xl">
             {/* Carte 1 */}
             <div className="flex items-start gap-4 rounded-2xl ring-1 ring-inset ring-[#1565c0]/20 bg-white p-5 w-full">
@@ -82,9 +72,9 @@ export default function SimpleRapideIntuitif({
                 </svg>
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-black">Découverte</h3>
+                <h3 className="text-lg font-semibold text-black">Un scan, une réponse</h3>
                 <p className="mt-1 text-sm text-black/80">
-                  Repérez en un coup d’œil les produits qui vous vont le mieux, sans perdre de temps.
+                  Prenez une photo d’un produit, Qera vous indique immédiatement ce qui vous correspond.
                 </p>
               </div>
             </div>
@@ -98,29 +88,28 @@ export default function SimpleRapideIntuitif({
                 </svg>
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-black">Recherche</h3>
+                <h3 className="text-lg font-semibold text-black">Vos filtres, vos priorités</h3>
                 <p className="mt-1 text-sm text-black/80">
-                  Filtrez selon vos priorités : <span className="font-semibold text-[#1565c0]">prix</span>,{" "}
-                  <span className="font-semibold text-[#1565c0]">santé</span>,{" "}
-                  <span className="font-semibold text-[#1565c0]">durabilité</span> et allergies.
+                  Allergies, prix, nutrition ou écologie : filtrez ce qui compte vraiment pour vous.
                 </p>
               </div>
             </div>
 
             {/* Carte 3 */}
-            <div className="flex items-start gap-4 rounded-2xl ring-1 ring-inset ring-[#1565c0]/20 bg-white p-5 w-full">
+           {/* <div className="flex items-start gap-4 rounded-2xl ring-1 ring-inset ring-[#1565c0]/20 bg-white p-5 w-full">
               <div className="grid size-10 place-items-center rounded-xl bg-[#1565c0]/10">
                 <svg viewBox="0 0 24 24" width="18" height="18" className="text-[#1565c0]" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6l1-1a5.5 5.5 0 0 0 0-7.8z" />
                 </svg>
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-black">Favoris</h3>
+                <h3 className="text-lg font-semibold text-black">Plus clair, plus rapide</h3>
                 <p className="mt-1 text-sm text-black/80">
-                  Gardez vos trouvailles à portée de main et planifiez sereinement vos achats.
+                  Vos favoris accessibles, vos choix facilités. Achetez avec confiance.
                 </p>
               </div>
-            </div>
+            </div>*/}
+
           </div>
         </div>
       </div>
