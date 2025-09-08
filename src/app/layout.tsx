@@ -20,6 +20,24 @@ export const metadata: Metadata = {
   title: "Qera — Éclairez vos achats.",
   description:
     "Qera vous aide à choisir les meilleurs produits pour votre budget, votre santé et vos allergies.",
+  openGraph: {
+    title: "Qera — L'application simple pour mieux consommer",
+    description: "Comparez les produits alimentaires selon vos critères : prix, santé, allergies. Une photo suffit.",
+    images: [
+      {
+        url: "/images/logo-qera.jpeg",
+        width: 1200,
+        height: 630,
+        alt: "Logo Qera",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Qera — L'application simple pour mieux consommer",
+    description: "Comparez les produits alimentaires selon vos critères : prix, santé, allergies. Une photo suffit.",
+    images: ["/images/logo-qera.jpeg"],
+  },
 };
 
 export default function RootLayout({
