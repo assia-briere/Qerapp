@@ -17,6 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.qerapp.com/"),
   title: "Qera — Éclairez vos achats.",
   description:
     "Qera vous aide à choisir les meilleurs produits pour votre budget, votre santé et vos allergies.",
