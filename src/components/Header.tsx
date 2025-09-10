@@ -28,7 +28,7 @@ export default function Header() {
               alt="Qera"
               width={140}
               height={36}
-              className="h-15 w-auto"
+              className="h-25 w-auto"
               priority
             />
           </Link>
@@ -42,7 +42,7 @@ export default function Header() {
             >
               L’application
             </Link>
-
+{/*
             <Link
               href="/blogs"
               className={`${baseLink} ${isBlogs ? activeLink : ""}`}
@@ -57,7 +57,7 @@ export default function Header() {
               aria-current={isTeam ? "page" : undefined}
             >
               Équipe Qera
-            </Link>
+            </Link>*/}
           </nav>
 
           {/* Right side: social + burger */}
@@ -70,10 +70,17 @@ export default function Header() {
               aria-label="LinkedIn"
               className="grid size-9 place-items-center rounded-full bg-gray-100 transition hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#1565c0]"
             >
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" className="text-black">
+              <svg
+                viewBox="0 0 24 24"
+                width="18"
+                height="18"
+                fill="currentColor"
+                className="text-[#0A66C2]"  // LinkedIn blue
+              >
                 <path d="M4.98 3.5C4.98 4.6 4.1 5.5 3 5.5S1 4.6 1 3.5 1.9 1.5 3 1.5s1.98.9 1.98 2zm.02 4H1V21h4V7.5zm7.5 0H9v13.5h4V14c0-2.2 3-2.4 3 0v7.5h4V13c0-4.7-5-4.5-6.5-2.2V7.5z" />
               </svg>
             </a>
+
 
             {/* Instagram */}
             <a
@@ -115,7 +122,7 @@ export default function Header() {
               >
                 L’application
               </Link>
-              <Link
+               {/*<Link
                 href="/blogs"
                 onClick={() => setOpen(false)}
                 className="py-2 text-base font-medium hover:text-[#1565c0]"
@@ -130,7 +137,7 @@ export default function Header() {
                 aria-current={isTeam ? "page" : undefined}
               >
                 Équipe Qera
-              </Link>
+              </Link>*/}
             </nav>
           </div>
         )}

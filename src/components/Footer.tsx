@@ -12,18 +12,24 @@ export default function Footer() {
             </h2>
 
             <div className="mt-6 flex items-center gap-4">
-              {/* LinkedIn */}
-              <a
-                href="https://www.linkedin.com/company/qerapp"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-                className="grid size-11 place-items-center rounded-full bg-gray-100 transition hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#1565c0]"
+            {/* LinkedIn */}
+            <a
+              href="https://www.linkedin.com/company/qerapp"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="grid size-9 place-items-center rounded-full bg-gray-100 transition hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#1565c0]"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="18"
+                height="18"
+                fill="currentColor"
+                className="text-[#0A66C2]"  // LinkedIn blue
               >
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                  <path d="M4.98 3.5C4.98 4.6 4.1 5.5 3 5.5S1 4.6 1 3.5 1.9 1.5 3 1.5s1.98.9 1.98 2zm.02 4H1V21h4V7.5zm7.5 0H9v13.5h4V14c0-2.2 3-2.4 3 0v7.5h4V13c0-4.7-5-4.5-6.5-2.2V7.5z" />
-                </svg>
-              </a>
+                <path d="M4.98 3.5C4.98 4.6 4.1 5.5 3 5.5S1 4.6 1 3.5 1.9 1.5 3 1.5s1.98.9 1.98 2zm.02 4H1V21h4V7.5zm7.5 0H9v13.5h4V14c0-2.2 3-2.4 3 0v7.5h4V13c0-4.7-5-4.5-6.5-2.2V7.5z" />
+              </svg>
+            </a>
 
               {/* Instagram */}
               <a
@@ -50,7 +56,6 @@ export default function Footer() {
               <span className="ml-1 font-semibold text-[#1565c0]">allergies</span>.
               <span className="ml-1 text-[#1565c0]">”</span>
             </p>
-            <p className="mt-3 text-sm text-black/80">Youssef Guessous — Co‑fondateur</p>
           </div>
         </div>
 

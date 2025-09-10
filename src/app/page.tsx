@@ -23,9 +23,9 @@ export default function Page() {
               </h1>
               <p className="mt-4 max-w-xl text-base leading-relaxed text-black/80">
                 Comparez en un clin d’œil selon vos priorités :
-                <span className="font-semibold text-[#1565c0]">santé</span>,
-                <span className="font-semibold text-[#1565c0]">budget</span>,
-                <span className="font-semibold text-[#1565c0]">allergies</span>.
+                <span className="font-semibold text-[#1565c0]"> santé </span>,
+                <span className="font-semibold text-[#1565c0]"> budget </span>,
+                <span className="font-semibold text-[#1565c0]"> allergies </span>.
                 Prenez une photo, Qera vous guide.
               </p>
               <div className="mt-8 flex items-center gap-3">
@@ -35,7 +35,7 @@ export default function Page() {
                   rel="noopener noreferrer"
                   className="rounded-full bg-[#1565c0] px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:opacity-95 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#1565c0]"
                 >
-                  Être parmi les premiers
+                  Devenir bêta-testeur
                 </a>
               </div>
             </div>
