@@ -10,8 +10,7 @@ export default function Header() {
   const pathname = usePathname();
 
   const isHome = pathname === "/";
-  const isBlogs = pathname.startsWith("/blogs");
-  const isTeam = pathname.startsWith("/equipe"); // ← adapte si ton chemin diffère
+  const isPolicy = pathname.startsWith("/politique-de-confidentialite");
 
   const baseLink =
     "text-base font-medium transition hover:text-[#1565c0] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#1565c0]";
@@ -42,22 +41,14 @@ export default function Header() {
             >
               L’application
             </Link>
-{/*
-            <Link
-              href="/blogs"
-              className={`${baseLink} ${isBlogs ? activeLink : ""}`}
-              aria-current={isBlogs ? "page" : undefined}
-            >
-              Qera blogs
-            </Link>
 
             <Link
-              href="/equipe"
-              className={`${baseLink} ${isTeam ? activeLink : ""}`}
-              aria-current={isTeam ? "page" : undefined}
+              href="/politique-de-confidentialite"
+              className={`${baseLink} ${isPolicy ? activeLink : ""}`}
+              aria-current={isPolicy ? "page" : undefined}
             >
-              Équipe Qera
-            </Link>*/}
+              Privacy Policy
+            </Link>
           </nav>
 
           {/* Right side: social + burger */}
@@ -79,7 +70,6 @@ export default function Header() {
               />
             </a>
 
-            {/* Instagram */}
             {/* Instagram */}
             <a
               href="https://www.instagram.com/qera_app?igsh=aHVvb3IyanIzdDNw"
@@ -124,22 +114,15 @@ export default function Header() {
               >
                 L’application
               </Link>
-               {/*<Link
-                href="/blogs"
-                onClick={() => setOpen(false)}
-                className="py-2 text-base font-medium hover:text-[#1565c0]"
-                aria-current={isBlogs ? "page" : undefined}
-              >
-                Qera blogs
-              </Link>
+
               <Link
-                href="/equipe"
+                href="/politique-de-confidentialite"
                 onClick={() => setOpen(false)}
                 className="py-2 text-base font-medium hover:text-[#1565c0]"
-                aria-current={isTeam ? "page" : undefined}
+                aria-current={isPolicy ? "page" : undefined}
               >
-                Équipe Qera
-              </Link>*/}
+                Politique de confidentialité
+              </Link>
             </nav>
           </div>
         )}
