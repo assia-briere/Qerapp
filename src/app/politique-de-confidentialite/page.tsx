@@ -64,6 +64,27 @@ export default function PolitiqueConfidentialite() {
         Cette politique peut évoluer. Les mises à jour seront publiées sur cette page.
       </p>
 
+      <h2 className="text-xl font-semibold mt-6 mb-2">8. Spécificités iOS</h2>
+      <p className="mb-4">
+        Conformément aux exigences de l’App Store, Qera demande l’accès à certaines fonctionnalités de votre
+        appareil uniquement pour le bon fonctionnement de l’application :
+      </p>
+      <ul className="list-disc ml-6 mb-4">
+        <li>
+          <strong>Accès à la caméra :</strong> uniquement pour scanner des produits. Aucune photo n’est stockée ni partagée.
+        </li>
+        <li>
+          <strong>Accès à la bibliothèque de photos :</strong> seulement si vous choisissez d’importer une image pour analyse.
+        </li>
+        <li>
+          <strong>Notifications :</strong> utilisées uniquement pour vous informer d’alertes utiles (ex. rappels ou nouveautés).
+        </li>
+      </ul>
+      <p className="mb-4">
+        Ces autorisations ne sont jamais utilisées à d’autres fins que celles décrites. Vous pouvez gérer ou retirer
+        ces permissions à tout moment depuis les réglages iOS.
+      </p>
+
       <h2 className="text-xl font-semibold mt-6 mb-2">Contact</h2>
       <p>
         Pour toute question :{" "}
