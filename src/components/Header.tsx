@@ -11,6 +11,7 @@ export default function Header() {
 
   const isHome = pathname === "/";
   const isPolicy = pathname.startsWith("/politique-de-confidentialite");
+  const isContact = pathname.startsWith("/contact");
 
   const baseLink =
     "text-base font-medium transition hover:text-[#1565c0] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#1565c0]";
@@ -49,6 +50,13 @@ export default function Header() {
             >
               Privacy Policy
             </Link>
+            <Link
+              href="/contact"
+              className={`${baseLink} ${isContact ? activeLink : ""}`}
+              aria-current={isContact ? "page" : undefined}
+            >
+              Contactez-nous
+            </Link>
           </nav>
 
           {/* Right side: social + burger */}
@@ -61,7 +69,7 @@ export default function Header() {
               aria-label="LinkedIn"
               className="grid size-9 place-items-center rounded-full bg-gray-100 transition hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#1565c0]"
             >
-              <img
+              <Image
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/LinkedIn_icon.svg/1024px-LinkedIn_icon.svg.png"
                 alt="LinkedIn"
                 width={18}
@@ -78,7 +86,7 @@ export default function Header() {
               aria-label="Instagram"
               className="grid size-9 place-items-center rounded-full bg-gray-100 transition hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#E1306C]"
             >
-              <img
+              <Image
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/600px-Instagram_icon.png"
                 alt="Instagram"
                 width={18}
@@ -123,6 +131,13 @@ export default function Header() {
               >
                 Politique de confidentialité
               </Link>
+              <Link
+              href="/contact"
+              className={`${baseLink} ${isContact ? activeLink : ""}`}
+              aria-current={isContact ? "page" : undefined}
+            >
+              Contactez-nous
+            </Link>
             </nav>
           </div>
         )}
