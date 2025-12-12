@@ -46,9 +46,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="fr">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white text-black`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white text-black`}>
         {/* Structure en colonne pour pousser le footer en bas */}
         <div className="flex min-h-screen flex-col">
           <Header />
