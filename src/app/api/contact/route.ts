@@ -12,7 +12,7 @@ export async function POST(request: Request) {
     // TODO: Intégrer un service d'email (Resend, SendGrid, etc.)
     
     return NextResponse.json({ success: true }, { status: 200 });
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       { error: "Failed to process request" },
       { status: 500 }
