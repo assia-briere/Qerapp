@@ -4,6 +4,7 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import PourquoiQera from "@/components/pourquoiQera";
 import SimpleRapideIntuitif from "@/components/simple";
 
@@ -19,23 +20,30 @@ export default function Page() {
           <div className="grid min-h-[70vh] grid-cols-1 items-center gap-10 py-16 md:grid-cols-2">
             <div>
               <h1 className="mt-5 text-4xl font-black leading-tight tracking-tight text-black sm:text-5xl">
-                Qera, l’application simple pour mieux choisir vos produits.
+                Qera vous aide à choisir le bon produit en rayon, en quelques secondes.
               </h1>
               <p className="mt-4 max-w-xl text-base leading-relaxed text-black/80">
-                Comparez en un clin d’œil selon vos priorités :
+                Prenez une photo et comparez selon vos priorités :
                 <span className="font-semibold text-[#1565c0]"> santé </span>,
                 <span className="font-semibold text-[#1565c0]"> budget </span>,
-                <span className="font-semibold text-[#1565c0]"> allergies </span>.
-                Prenez une photo, Qera vous guide.
+                <span className="font-semibold text-[#1565c0]"> allergies </span> 
+                <span>et,</span>
+                <span className="font-semibold text-[#1565c0]"> environnement </span>.
               </p>
-              <div className="mt-8 flex items-center gap-3">
+              <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-3">
+                <Link
+                  href="/beta"
+                  className="rounded-full bg-[#1565c0] px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#1976d2] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#1565c0]"
+                >
+                  Rejoindre la bêta
+                </Link>
                 <a
                   href={WAITLIST_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-full bg-[#1565c0] px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:opacity-95 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#1565c0]"
+                  className="rounded-full border-2 border-[#1565c0] bg-transparent px-6 py-3 text-sm font-semibold text-[#1565c0] transition hover:bg-[#1565c0] hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#1565c0]"
                 >
-                  Devenir bêta-testeur
+                  Google Form
                 </a>
               </div>
             </div>
