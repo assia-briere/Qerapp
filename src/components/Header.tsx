@@ -37,7 +37,7 @@ export default function Header() {
           <nav className="hidden md:flex items-center gap-10" aria-label="Navigation principale">
             <Link
               href="/"
-              className="rounded-full bg-[#1565c0] px-5 py-2 text-sm font-semibold text-white shadow-sm transition hover:opacity-95 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#1565c0]"
+              className="rounded-full bg-[#1565c0] px-5 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-[#1976d2] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#1565c0]"
               aria-current={isHome ? "page" : undefined}
             >
               L’application

@@ -44,6 +44,7 @@ body {
 a {
   text-underline-offset: 2px;
 }
-a:hover {
+
+a:not([class*="bg-"]):hover {
   color: var(--qera);
 }

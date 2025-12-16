@@ -13,33 +13,33 @@ export default function PourquoiQera() {
           {/* Card 1 */}
           <article className="rounded-3xl border border-black/10 bg-white p-8 shadow-sm">
             <div className="text-4xl font-black leading-none text-[#1565c0]/30">01.</div>
-            <h3 className="mt-4 text-2xl font-bold text-black">Photographiez. Comparez. Choisissez.</h3>
+            <h3 className="mt-4 text-2xl font-bold text-black">Rapide et clair</h3>
             <p className="mt-3 text-black/80">
-              Prenez une photo d’un produit. Qera vous donne une info claire, rapide et personnalisée.
-              Moins d’hésitation, plus de simplicité.
+              Une réponse simple, sans passer 5 minutes à lire l’étiquette.
             </p>
           </article>
 
           {/* Card 2 */}
           <article className="rounded-3xl border border-black/10 bg-white p-8 shadow-sm">
             <div className="text-4xl font-black leading-none text-[#1565c0]/30">02.</div>
-            <h3 className="mt-4 text-2xl font-bold text-black">Un tri selon vos critères</h3>
+            <h3 className="mt-4 text-2xl font-bold text-black">Personnalisé</h3>
             <p className="mt-3 text-black/80">
-              Filtrez selon ce qui compte vraiment pour vous :
-              <span className="mx-1 font-semibold text-[#1565c0]">prix</span>,
+               Vos filtres, vos priorités : budget, allergies, nutrition, environnement.
+              {/* <span className="mx-1 font-semibold text-[#1565c0]">prix</span>,
               <span className="mx-1 font-semibold text-[#1565c0]">santé</span>,
               <span className="ml-1 font-semibold text-[#1565c0]">environnement</span>.
-              Qera s’adapte à vos priorités.
+              Qera s’adapte à vos priorités. */}
             </p>
           </article>
 
           {/* Card 3 */}
           <article className="rounded-3xl border border-black/10 bg-white p-8 shadow-sm">
             <div className="text-4xl font-black leading-none text-[#1565c0]/30">03.</div>
-            <h3 className="mt-4 text-2xl font-bold text-black">Achetez en confiance</h3>
+            <h3 className="mt-4 text-2xl font-bold text-black">Données fiables</h3>
             <p className="mt-3 text-black/80">
-              Grâce à des données claires et fiables, Qera vous aide à faire
-              des choix <span className="font-semibold text-[#1565c0]">plus éclairés</span>, plus rapidement.
+             Des informations structurées pour décider plus sereinement.
+              {/* Grâce à des données claires et fiables, Qera vous aide à faire
+              des choix <span className="font-semibold text-[#1565c0]">plus éclairés</span>, plus rapidement. */}
             </p>
           </article>
         </div>
