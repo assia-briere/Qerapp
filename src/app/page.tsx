@@ -4,12 +4,11 @@
 
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
 import PourquoiQera from "@/components/pourquoiQera";
 import SimpleRapideIntuitif from "@/components/simple";
 
-// const WAITLIST_URL =
-//   "https://docs.google.com/forms/d/e/1FAIpQLSc9KLE1StFrBnBZH6HHPXBDJsaXVwxv5bbMmpzBvPDEN9ODMw/viewform?usp=header";
+const WAITLIST_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSc9KLE1StFrBnBZH6HHPXBDJsaXVwxv5bbMmpzBvPDEN9ODMw/viewform?usp=header";
 
 export default function Page() {
   return (
@@ -31,20 +30,20 @@ export default function Page() {
                 <span className="font-semibold text-[#1565c0]"> environnement </span>.
               </p>
               <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-3">
-                <Link
+                {/* <Link
                   href="/beta"
                   className="rounded-full bg-[#1565c0] px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#1976d2] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#1565c0]"
                 >
                   Rejoindre la bêta
-                </Link>
-                {/* <a
+                </Link> */}
+                <a
                   href={WAITLIST_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-full border-2 border-[#1565c0] bg-transparent px-6 py-3 text-sm font-semibold text-[#1565c0] transition hover:bg-[#1565c0] hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#1565c0]"
+                  className="rounded-full bg-[#1565c0] px-5 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-[#1976d2] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#1565c0]"
                 >
-                  Google Form
-                </a> */}
+                  Rejoindre la bêta
+                </a>
               </div>
             </div>
             <div className="relative mx-auto h-[260px] w-[260px] md:h-[340px] md:w-[340px]">
