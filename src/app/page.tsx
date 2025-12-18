@@ -11,6 +11,22 @@ const WAITLIST_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLSc9KLE1StFrBnBZH6HHPXBDJsaXVwxv5bbMmpzBvPDEN9ODMw/viewform?usp=header";
 
 export default function Page() {
+
+  const handleWaitlistClick = () => {
+    console.log('🔵 Button clicked!'); // Debug log
+    
+    // Track the click event
+    if (typeof window !== 'undefined' && window.dataLayer) {
+      console.log('🟢 Pushing waitlist_click event'); // Debug log
+      window.dataLayer.push({
+        event: 'waitlist_click',
+        button_location: 'hero_section'
+      });
+      console.log('✅ Event pushed successfully'); // Debug log
+    } else {
+      console.error('❌ DataLayer not available'); // Debug log
+    }
+  };
   return (
     <main>
       {/* HERO SIMPLIFIÉ */}
@@ -40,6 +56,7 @@ export default function Page() {
                   href={WAITLIST_URL}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={handleWaitlistClick}
                   className="rounded-full bg-[#1565c0] px-5 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-[#1976d2] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#1565c0]"
                 >
                   Rejoindre la bêta
