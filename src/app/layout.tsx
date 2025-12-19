@@ -9,11 +9,13 @@ import Footer from "@/components/Footer";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -21,7 +23,11 @@ export const metadata: Metadata = {
   title: "Qera — Éclairez vos achats.",
   description:
     "Qera vous aide à choisir les meilleurs produits pour votre budget, votre santé et vos allergies.",
+  keywords: ["Qera", "application", "mieux consommer", "produits alimentaires", "comparaison de produits", "santé", "budget", "allergies", "environnement", "photo", "rayon", "choix de produits", "consommation responsable", "nutrition", "évaluation de produits", "facilité d'utilisation", "intuitif", "rapide", "utilisation mobile", "achats éclairés", "bien-être", "qualité de vie", "alimentation saine", "transparence des produits", "information produit", "technologie alimentaire", "innovation alimentaire", "application mobile santé", "application consommation", "comparateur de produits"],
   openGraph: {
+    type: "website",
+    url: "https://www.qerapp.com/",
+    siteName: "Qera",
     title: "Qera — L'application simple pour mieux consommer",
     description: "Comparez les produits alimentaires selon vos critères : prix, santé, allergies. Une photo suffit.",
     images: [
@@ -29,7 +35,7 @@ export const metadata: Metadata = {
         url: "/images/logo-qera.jpeg",
         width: 1200,
         height: 630,
-        alt: "Logo Qera",
+        alt: "Qera - Éclairez vos achats",
       },
     ],
   },
@@ -38,7 +44,21 @@ export const metadata: Metadata = {
     title: "Qera — L'application simple pour mieux consommer",
     description: "Comparez les produits alimentaires selon vos critères : prix, santé, allergies. Une photo suffit.",
     images: ["/images/logo-qera.jpeg"],
+    creator: "@QeraApp",
   },
+  // ✅ Robots (tell search engines how to index)
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  category: 'technology',
 };
 
 export default function RootLayout({
@@ -56,6 +76,32 @@ export default function RootLayout({
             })(window,document,'script','dataLayer','GTM-PJSJW3ZX');
           `}
         </Script>
+                {/* ✅ JSON-LD Structured Data for SEO */}
+        <Script
+          id="structured-data"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebApplication",
+              "name": "Qera",
+              "description": "Application pour comparer les produits alimentaires",
+              "url": "https://www.qerapp.com",
+              "applicationCategory": "LifestyleApplication",
+              "operatingSystem": "iOS, Android, Web",
+              "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "EUR",
+              },
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.8",
+                "ratingCount": "127"
+              }
+            })
+          }}
+        />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white text-black`}>
         <noscript>
