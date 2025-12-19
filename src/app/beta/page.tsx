@@ -1,5 +1,6 @@
 "use client";
 
+import { Metadata } from "next";
 import { useState } from "react";
 
 // Extend Window interface for dataLayer
@@ -8,6 +9,15 @@ declare global {
     dataLayer: Array<Record<string, unknown>>;
   }
 }
+
+export const metadata: Metadata = {
+  title: 'Rejoindre la Bêta',
+  description: 'Inscrivez-vous à la version bêta de Qera et soyez parmi les premiers à tester notre application.',
+  openGraph: {
+    title: 'Rejoindre la Bêta | Qera',
+    description: 'Inscrivez-vous à la version bêta de Qera',
+  },
+};
 
 export default function BetaPage() {
   const [step, setStep] = useState<"form" | "success">("form");
