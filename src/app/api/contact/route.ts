@@ -1,6 +1,32 @@
 import { NextResponse } from 'next/server';
 export const dynamic = 'force-dynamic';
 
+
+// Verify reCAPTCHA token
+async function verifyRecaptcha(token: string): Promise<boolean> {
+  const secretKey = process.env.RECAPTCHA_SECRET_KEY;
+  
+  if (!secretKey) {
+    console.error('RECAPTCHA_SECRET_KEY is not set');
+    return false;
+  }
+
+  try {
+    const response = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: `secret=${secretKey}&response=${token}`,
+    });
+
+    const data = await response.json();
+    return data.success === true;
+  } catch (error) {
+    console.error('reCAPTCHA verification error:', error);
+    return false;
+  }
+}
 export async function POST(request: Request) {
   try {
     // Import Resend dynamically to avoid build-time evaluation
@@ -10,12 +36,28 @@ export async function POST(request: Request) {
     const resend = new Resend(process.env.RESEND_API_KEY);
     
     const body = await request.json();
-    const { name, email, subject, message } = body;
+    const { name, email, subject, message, recaptchaToken } = body;
 
     // Validate input
     if (!name || !email || !subject || !message) {
       return NextResponse.json(
         { error: 'All fields are required' },
+        { status: 400 }
+      );
+    }
+
+        // Verify reCAPTCHA
+    if (!recaptchaToken) {
+      return NextResponse.json(
+        { error: 'CAPTCHA manquant' },
+        { status: 400 }
+      );
+    }
+
+    const isValidCaptcha = await verifyRecaptcha(recaptchaToken);
+    if (!isValidCaptcha) {
+      return NextResponse.json(
+        { error: 'Vérification CAPTCHA échouée. Veuillez réessayer.' },
         { status: 400 }
       );
     }

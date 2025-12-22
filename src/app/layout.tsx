@@ -30,12 +30,14 @@ export const metadata: Metadata = {
     siteName: "Qera",
     title: "Qera — L'application simple pour mieux consommer",
     description: "Comparez les produits alimentaires selon vos critères : prix, santé, allergies. Une photo suffit.",
+    locale: "fr_FR",
     images: [
       {
         url: "/images/logo-qera.jpeg",
         width: 1200,
         height: 630,
         alt: "Qera - Éclairez vos achats",
+        type: "image/jpeg",
       },
     ],
   },
@@ -76,7 +78,7 @@ export default function RootLayout({
             })(window,document,'script','dataLayer','GTM-PJSJW3ZX');
           `}
         </Script>
-                {/* ✅ JSON-LD Structured Data for SEO */}
+      {/* ✅ JSON-LD Structured Data for SEO */}
         <Script
           id="structured-data"
           type="application/ld+json"
