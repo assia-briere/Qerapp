@@ -1,6 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
+
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -12,6 +14,8 @@ export default function Contact() {
   const [status, setStatus] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
+
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -37,6 +41,14 @@ export default function Contact() {
       return;
     }
 
+  // Get reCAPTCHA token
+    const recaptchaToken = recaptchaRef.current?.getValue();
+    if (!recaptchaToken) {
+      setStatus("error");
+      setErrorMessage("Veuillez compléter le CAPTCHA.");
+      return;
+    }
+
     setIsSubmitting(true);
     setStatus("");
     setErrorMessage("");
@@ -47,7 +59,10 @@ export default function Contact() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          recaptchaToken
+        }),
       });
 
       const data = await response.json();
@@ -55,14 +70,17 @@ export default function Contact() {
       if (response.ok) {
         setStatus("success");
         setFormData({ name: "", email: "", subject: "", message: "" });
+        recaptchaRef.current?.reset();
       } else {
         setStatus("error");
         setErrorMessage(data.error || "Une erreur s'est produite lors de l'envoi.");
+        recaptchaRef.current?.reset();
       }
     } catch (error) {
       setStatus("error");
       setErrorMessage("Impossible de se connecter au serveur. Veuillez réessayer.");
       console.error("Submit error:", error);
+      recaptchaRef.current?.reset();
     } finally {
       setIsSubmitting(false);
     }
@@ -144,6 +162,15 @@ export default function Contact() {
               rows={6}
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition resize-none"
               placeholder="Décrivez votre demande en détail..."
+            />
+          </div>
+
+                  {/* reCAPTCHA */}
+          <div className="flex justify-center">
+            <ReCAPTCHA
+              ref={recaptchaRef}
+              sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
+              theme="light"
             />
           </div>
 
