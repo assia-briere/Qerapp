@@ -7,8 +7,8 @@ import Image from "next/image";
 import PourquoiQera from "@/components/pourquoiQera";
 import SimpleRapideIntuitif from "@/components/simple";
 
-const WAITLIST_URL =
-  "https://docs.google.com/forms/d/e/1FAIpQLSc9KLE1StFrBnBZH6HHPXBDJsaXVwxv5bbMmpzBvPDEN9ODMw/viewform?usp=header";
+// const WAITLIST_URL =
+//   "https://docs.google.com/forms/d/e/1FAIpQLSc9KLE1StFrBnBZH6HHPXBDJsaXVwxv5bbMmpzBvPDEN9ODMw/viewform?usp=header";
 
 export default function Page() {
 
@@ -53,8 +53,7 @@ export default function Page() {
                   Rejoindre la bêta
                 </Link> */}
                 <a
-                  href={WAITLIST_URL}
-                  target="_blank"
+                  href="/beta"
                   rel="noopener noreferrer"
                   onClick={handleWaitlistClick}
                   className="rounded-full bg-[#1565c0] px-5 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-[#1976d2] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#1565c0]"

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // Extend Window interface for dataLayer
 declare global {
@@ -14,10 +14,21 @@ export default function BetaPage() {
   const [formData, setFormData] = useState({
     email: "",
     os: "ios",
+    country: "",
+    source: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
   const [referralLink, setReferralLink] = useState("");
+
+  // Track page view on mount
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.dataLayer) {
+      window.dataLayer.push({
+        event: "beta_view",
+      });
+    }
+  }, []);
 
   const handleSubmit = async () => {
     setError("");
@@ -26,6 +37,17 @@ export default function BetaPage() {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
       setError("Veuillez entrer une adresse email valide.");
+      return;
+    }
+
+    // Validate required fields
+    if (!formData.country) {
+      setError("Veuillez sélectionner votre pays.");
+      return;
+    }
+
+    if (!formData.source) {
+      setError("Veuillez indiquer comment vous avez connu Qera.");
       return;
     }
 
@@ -47,6 +69,8 @@ export default function BetaPage() {
             event: "beta_submit_success",
             email: formData.email,
             os: formData.os,
+            country: formData.country,
+            source: formData.source,
           });
         }
 
@@ -135,6 +159,48 @@ export default function BetaPage() {
             <p className="text-lg text-gray-600">
               Vous recevrez un email d&apos;ici 48h avec vos accès anticipés.
             </p>
+          </div>
+
+          {/* Download Section */}
+          <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-6 mb-8 text-white">
+            <h2 className="text-2xl font-bold mb-2 text-center">📱 Téléchargez Qera maintenant</h2>
+            <p className="text-blue-100 text-center mb-6 text-sm">
+              Commencez dès aujourd&apos;hui à analyser vos produits
+            </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {/* iOS TestFlight Button */}
+              <a
+                href="https://testflight.apple.com/join/tzvz8UXU"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-3 bg-white text-gray-900 font-semibold py-4 px-6 rounded-xl hover:bg-gray-50 transition shadow-lg"
+              >
+                <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                </svg>
+                <div className="text-left">
+                  <div className="text-xs text-gray-500">Disponible sur</div>
+                  <div className="text-sm font-bold">TestFlight (iOS)</div>
+                </div>
+              </a>
+
+              {/* Android Play Store Button */}
+              <a
+                href="https://play.google.com/store/apps/details?id=com.qera.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-3 bg-white text-gray-900 font-semibold py-4 px-6 rounded-xl hover:bg-gray-50 transition shadow-lg"
+              >
+                <svg className="w-8 h-8 text-green-600" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85-.29-.15-.65-.06-.83.22l-1.88 3.24a11.46 11.46 0 0 0-8.94 0L5.65 5.67c-.19-.28-.55-.37-.83-.22-.3.16-.42.54-.26.85l1.84 3.18C4.8 10.92 3.5 12.62 3.5 14.5h17c0-1.88-1.3-3.58-2.9-5.02M7 13.75c-.41 0-.75-.34-.75-.75s.34-.75.75-.75.75.34.75.75-.34.75-.75.75m10 0c-.41 0-.75-.34-.75-.75s.34-.75.75-.75.75.34.75.75-.34.75-.75.75"/>
+                </svg>
+                <div className="text-left">
+                  <div className="text-xs text-gray-500">Disponible sur</div>
+                  <div className="text-sm font-bold">Google Play</div>
+                </div>
+              </a>
+            </div>
           </div>
 
           <div className="bg-blue-50 rounded-2xl p-6 mb-8">
@@ -288,6 +354,48 @@ export default function BetaPage() {
                   </div>
                 </button>
               </div>
+            </div>
+
+            {/* Country Field */}
+            <div>
+              <label htmlFor="country" className="block text-sm font-semibold text-gray-700 mb-2">
+                Pays *
+              </label>
+              <select
+                id="country"
+                value={formData.country}
+                onChange={(e) => setFormData({ ...formData, country: e.target.value })}
+                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition text-lg bg-white"
+              >
+                <option value="">Sélectionnez votre pays</option>
+                <option value="FR">🇫🇷 France</option>
+                <option value="BE">🇧🇪 Belgique</option>
+                <option value="CH">🇨🇭 Suisse</option>
+                <option value="MA">🇲🇦 Maroc</option>
+                <option value="OTHER">🌍 Autre</option>
+              </select>
+            </div>
+
+            {/* Source Field */}
+            <div>
+              <label htmlFor="source" className="block text-sm font-semibold text-gray-700 mb-2">
+                Comment avez-vous entendu parler de Qera ? *
+              </label>
+              <select
+                id="source"
+                value={formData.source}
+                onChange={(e) => setFormData({ ...formData, source: e.target.value })}
+                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition text-lg bg-white"
+              >
+                <option value="">Sélectionnez une option</option>
+                <option value="social_media">Réseaux sociaux (Instagram, Facebook, TikTok)</option>
+                <option value="friend">Recommandation d&apos;un ami</option>
+                <option value="search">Recherche Google</option>
+                <option value="linkedin">LinkedIn</option>
+                <option value="youtube">YouTube</option>
+                <option value="blog">Blog ou article</option>
+                <option value="other">Autre</option>
+              </select>
             </div>
 
             {/* Error Message */}
