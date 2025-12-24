@@ -4,12 +4,12 @@ export const dynamic = 'force-dynamic';
 
 export async function POST(request: Request) {
   try {
-    const { email, os } = await request.json();
+    const { email, os, country, source } = await request.json();
 
     // Validate input
-    if (!email || !os) {
+    if (!email || !os || !country || !source) {
       return NextResponse.json(
-        { error: "Email et OS requis" },
+        { error: "Tous les champs sont requis" },
         { status: 400 }
       );
     }
@@ -65,6 +65,18 @@ export async function POST(request: Request) {
                   </td>
                 </tr>
                 <tr>
+                  <td style="padding: 8px 0; font-weight: bold; color: #4b5563;">Pays:</td>
+                  <td style="padding: 8px 0; color: #1f2937;">
+                    ${country}
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 8px 0; font-weight: bold; color: #4b5563;">Source:</td>
+                  <td style="padding: 8px 0; color: #1f2937;">
+                    ${source}
+                  </td>
+                </tr>
+                <tr>
                   <td style="padding: 8px 0; font-weight: bold; color: #4b5563;">Date:</td>
                   <td style="padding: 8px 0; color: #1f2937;">
                     ${new Date().toLocaleString('fr-FR', { 
@@ -111,11 +123,36 @@ export async function POST(request: Request) {
               </p>
             </div>
             
+            <!-- Download Buttons -->
+            <div style="background: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%); padding: 25px; border-radius: 12px; margin-bottom: 20px; text-align: center;">
+              <h3 style="color: white; margin-top: 0; margin-bottom: 15px;">📱 Téléchargez Qera maintenant</h3>
+              <p style="color: #bfdbfe; font-size: 14px; margin-bottom: 20px;">Commencez dès aujourd'hui à analyser vos produits</p>
+              
+              <table style="width: 100%; max-width: 500px; margin: 0 auto;" cellpadding="10">
+                <tr>
+                  <td style="padding: 5px;">
+                    <a href="https://testflight.apple.com/join/tzvz8UXU" 
+                       style="display: block; background-color: white; color: #1f2937; padding: 15px; 
+                              border-radius: 12px; text-decoration: none; font-weight: 600;">
+                      🍎 TestFlight (iOS)
+                    </a>
+                  </td>
+                  <td style="padding: 5px;">
+                    <a href="https://play.google.com/store/apps/details?id=com.qera.app" 
+                       style="display: block; background-color: white; color: #1f2937; padding: 15px; 
+                              border-radius: 12px; text-decoration: none; font-weight: 600;">
+                      🤖 Google Play
+                    </a>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            
             <div style="background-color: white; padding: 25px; border-radius: 8px; margin-bottom: 20px;">
               <h3 style="color: #2563eb; margin-top: 0;">📧 Prochaines étapes</h3>
               <ol style="color: #4b5563; line-height: 1.8; padding-left: 20px;">
                 <li>Surveillez votre boîte email (vérifiez vos spams)</li>
-                <li>Téléchargez l'app via le lien que nous vous enverrons</li>
+                <li>Téléchargez l'app via les boutons ci-dessus</li>
                 <li>Profitez de Qera en avant-première !</li>
               </ol>
             </div>
