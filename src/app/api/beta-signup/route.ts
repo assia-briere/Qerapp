@@ -4,10 +4,10 @@ export const dynamic = 'force-dynamic';
 
 export async function POST(request: Request) {
   try {
-    const { email, os, country, source } = await request.json();
+    const { firstName, email, os, country, source } = await request.json();
 
     // Validate input
-    if (!email || !os || !country || !source) {
+    if (!firstName || !email || !os || !country || !source) {
       return NextResponse.json(
         { error: "Tous les champs sont requis" },
         { status: 400 }
@@ -27,7 +27,7 @@ export async function POST(request: Request) {
     const { Resend } = await import('resend');
     const resend = new Resend(process.env.RESEND_API_KEY);
 
-    // Send notification email to you
+    // Send notification email to admin
     await resend.emails.send({
       from: 'Qera Beta <onboarding@resend.dev>',
       to: ['contact@qerapp.com'],
@@ -43,6 +43,12 @@ export async function POST(request: Request) {
             <div style="background-color: white; padding: 20px; border-radius: 8px; margin-bottom: 15px;">
               <h3 style="margin-top: 0; color: #2563eb;">Informations de l'utilisateur</h3>
               <table style="width: 100%; border-collapse: collapse;">
+                <tr>
+                  <td style="padding: 8px 0; font-weight: bold; color: #4b5563;">Prénom:</td>
+                  <td style="padding: 8px 0; color: #1f2937;">
+                    ${firstName}
+                  </td>
+                </tr>
                 <tr>
                   <td style="padding: 8px 0; font-weight: bold; color: #4b5563;">Email:</td>
                   <td style="padding: 8px 0;">
@@ -90,7 +96,7 @@ export async function POST(request: Request) {
             
             <div style="background-color: #dbeafe; padding: 15px; border-radius: 8px; border-left: 4px solid #2563eb;">
               <p style="margin: 0; color: #1e40af; font-size: 14px;">
-                <strong>💡 Action requise:</strong> Envoyez un email d'accès beta à cet utilisateur dans les 48h.
+                <strong>💡 Action requise:</strong> L'email de bienvenue a été automatiquement envoyé à ${firstName}.
               </p>
             </div>
           </div>
@@ -104,72 +110,93 @@ export async function POST(request: Request) {
       `,
     });
 
-    // Send confirmation email to the user
+    // Send welcome email to user (using the template from Model email)
     await resend.emails.send({
-      from: 'Qera Beta <onboarding@resend.dev>',
+      from: 'Contact Qera <onboarding@resend.dev>',
       to: [email],
-      subject: 'Bienvenue dans la beta Qera ! 🎉',
+      subject: 'Bienvenue dans le bêta-test QERA 🚀',
       html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <div style="background-color: #2563eb; color: white; padding: 30px; border-radius: 8px 8px 0 0; text-align: center;">
-            <h1 style="margin: 0; font-size: 32px;">🎉 Bienvenue !</h1>
+        <div dir="ltr">
+          <div style="background:linear-gradient(135deg,rgb(0,60,128),rgb(0,152,217));padding:20px 20px 15px;text-align:center;color:rgb(255,255,255)">
+            <!-- QERA Logo placeholder - you can add your logo here -->
+            <div style="font-size: 48px; font-weight: bold; color: white; margin-bottom: 10px;">QERA</div>
           </div>
           
-          <div style="background-color: #f9fafb; padding: 30px;">
-            <div style="background-color: white; padding: 25px; border-radius: 8px; margin-bottom: 20px;">
-              <h2 style="color: #1f2937; margin-top: 0;">Merci de votre inscription à la beta Qera</h2>
-              <p style="color: #4b5563; line-height: 1.6;">
-                Nous sommes ravis de vous compter parmi nos premiers utilisateurs ! Vous recevrez vos accès anticipés d'ici <strong>48 heures</strong>.
-              </p>
-            </div>
+          <div style="padding:40px 30px;line-height:1.6">
+            <h2 style="margin:10px 0px 0px">
+              <font face="arial, sans-serif" color="#000000">
+                <span style="font-size:22px;letter-spacing:0.2px">Bonjour ${firstName}</span>
+              </font>
+              <span style="font-size:22px;letter-spacing:0.2px;color:rgb(0,0,0);font-family:arial,sans-serif;font-weight:normal">,</span>
+            </h2>
             
-            <!-- Download Buttons -->
-            <div style="background: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%); padding: 25px; border-radius: 12px; margin-bottom: 20px; text-align: center;">
-              <h3 style="color: white; margin-top: 0; margin-bottom: 15px;">📱 Téléchargez Qera maintenant</h3>
-              <p style="color: #bfdbfe; font-size: 14px; margin-bottom: 20px;">Commencez dès aujourd'hui à analyser vos produits</p>
+            <div>
+              <p>
+                <font face="arial, sans-serif" color="#000000">
+                  Merci d'avoir rejoint notre programme de bêta-test ! Vous faites maintenant partie de la communauté QERA et votre participation nous aidera à améliorer l'application.
+                </font>
+              </p>
               
-              <table style="width: 100%; max-width: 500px; margin: 0 auto;" cellpadding="10">
-                <tr>
-                  <td style="padding: 5px;">
-                    <a href="https://testflight.apple.com/join/tzvz8UXU" 
-                       style="display: block; background-color: white; color: #1f2937; padding: 15px; 
-                              border-radius: 12px; text-decoration: none; font-weight: 600;">
-                      🍎 TestFlight (iOS)
-                    </a>
-                  </td>
-                  <td style="padding: 5px;">
-                    <a href="https://play.google.com/store/apps/details?id=com.qera.app" 
-                       style="display: block; background-color: white; color: #1f2937; padding: 15px; 
-                              border-radius: 12px; text-decoration: none; font-weight: 600;">
-                      🤖 Google Play
-                    </a>
-                  </td>
-                </tr>
-              </table>
-            </div>
-            
-            <div style="background-color: white; padding: 25px; border-radius: 8px; margin-bottom: 20px;">
-              <h3 style="color: #2563eb; margin-top: 0;">📧 Prochaines étapes</h3>
-              <ol style="color: #4b5563; line-height: 1.8; padding-left: 20px;">
-                <li>Surveillez votre boîte email (vérifiez vos spams)</li>
-                <li>Téléchargez l'app via les boutons ci-dessus</li>
-                <li>Profitez de Qera en avant-première !</li>
-              </ol>
-            </div>
-            
-            <div style="background-color: #dbeafe; padding: 20px; border-radius: 8px; border-left: 4px solid #2563eb;">
-              <p style="margin: 0; color: #1e40af;">
-                <strong>💡 Astuce:</strong> Invitez vos amis pour passer en priorité dans la file d'attente !
+              <p><b><font face="arial, sans-serif" color="#000000">Commencez dès maintenant :</font></b></p>
+              
+              <ul>
+                <li style="margin-left:15px">
+                  Télécharger l'application QERA sur :<br>
+                  Android : 📲  <a href="https://play.google.com/store/apps/details?id=com.qera.app" target="_blank">https://play.google.com/store/apps/details?id=com.qera.app</a><br>
+                  IOS :  📲  <a href="https://testflight.apple.com/join/tzvz8UXU">https://testflight.apple.com/join/tzvz8UXU</a>
+                </li>
+                <li style="margin-left:15px">
+                  Testez les fonctionnalités : scan des produits et comparaisons selon vos critères (prix, nutrition, écologie, allergies)
+                </li>
+                <li style="margin-left:15px">
+                  <p>
+                    <font face="arial, sans-serif" color="#000000">
+                      Partagez vos retours dans notre communauté WhatsApp : 
+                      <a rel="noopener" href="https://chat.whatsapp.com/DC99hSnCFbLIKo187P6XjC" target="_blank">Rejoindre le groupe</a>
+                    </font>
+                  </p>
+                </li>
+              </ul>
+              
+              <p><b><font face="arial, sans-serif" color="#000000">Ce que vous trouverez dans ce mail :</font></b></p>
+              <ul>
+                <li style="margin-left:15px">
+                  <p><font face="arial, sans-serif" color="#000000">Guide QERA pour découvrir l'application et ses fonctionnalités</font></p>
+                </li>
+                <li style="margin-left:15px">
+                  <p><font face="arial, sans-serif" color="#000000">Image test pour scanner et tester depuis chez vous</font></p>
+                </li>
+              </ul>
+              
+              <p><b><font face="arial, sans-serif" color="#000000">À savoir :</font></b></p>
+              <ul>
+                <li style="margin-left:15px">
+                  <p><font face="arial, sans-serif" color="#000000">L'application fonctionne tous les jours de 10h à 22h</font></p>
+                </li>
+                <li style="margin-left:15px">
+                  <p><span style="color:rgb(0,0,0);font-family:arial,sans-serif">Vérifiez la présence de Wi-Fi si vous n'avez pas de réseau au supermarché</span></p>
+                </li>
+              </ul>
+              
+              <span style="color:rgb(0,0,0);font-family:arial,sans-serif">
+                Votre avis est essentiel pour corriger les bugs, améliorer l'expérience et construire une application qui vous ressemble.
+              </span>
+              
+              <p style="margin-top: 20px;">
+                <font face="arial, sans-serif" color="#000000">
+                  Merci pour votre contribution !<br>
+                  <b>L'équipe QERA</b>
+                </font>
               </p>
             </div>
           </div>
           
-          <div style="background-color: #f3f4f6; padding: 20px; text-align: center; border-radius: 0 0 8px 8px;">
-            <p style="color: #6b7280; font-size: 14px; margin: 0 0 10px 0;">
-              Des questions ? Contactez-nous à <a href="mailto:contact@qerapp.com" style="color: #2563eb;">contact@qerapp.com</a>
+          <div style="background-color:#f3f4f6;padding:20px;text-align:center;border-top:1px solid #e5e7eb">
+            <p style="margin:0 0 10px 0">
+              <a href="https://www.qerapp.com/" style="color:#2563eb;text-decoration:none">Visitez notre site</a>
             </p>
-            <p style="color: #9ca3af; font-size: 12px; margin: 0;">
-              © ${new Date().getFullYear()} Qera. Tous droits réservés.
+            <p style="margin:0;color:#6b7280;font-size:12px">
+              qerapp.com © ${new Date().getFullYear()} QERA - All rights reserved
             </p>
           </div>
         </div>
@@ -191,56 +218,17 @@ export async function POST(request: Request) {
 }
 
 // import { NextResponse } from 'next/server';
-// import { promises as fs } from 'fs';
-// import path from 'path';
 
 // export const dynamic = 'force-dynamic';
 
-// interface BetaSignup {
-//   email: string;
-//   os: string;
-//   signupDate: string;
-//   id: string;
-// }
-
-// // File to store beta signups
-// const SIGNUPS_FILE = path.join(process.cwd(), 'data', 'beta-signups.json');
-
-// // Ensure data directory exists
-// async function ensureDataDir() {
-//   const dataDir = path.join(process.cwd(), 'data');
-//   try {
-//     await fs.access(dataDir);
-//   } catch {
-//     await fs.mkdir(dataDir, { recursive: true });
-//   }
-// }
-
-// // Load existing signups
-// async function loadSignups(): Promise<BetaSignup[]> {
-//   try {
-//     await ensureDataDir();
-//     const data = await fs.readFile(SIGNUPS_FILE, 'utf-8');
-//     return JSON.parse(data) as BetaSignup[];
-//   } catch {
-//     return [];
-//   }
-// }
-
-// // Save signups
-// async function saveSignups(signups: BetaSignup[]): Promise<void> {
-//   await ensureDataDir();
-//   await fs.writeFile(SIGNUPS_FILE, JSON.stringify(signups, null, 2));
-// }
-
 // export async function POST(request: Request) {
 //   try {
-//     const { email, os } = await request.json();
+//     const { email, os, country, source } = await request.json();
 
 //     // Validate input
-//     if (!email || !os) {
+//     if (!email || !os || !country || !source) {
 //       return NextResponse.json(
-//         { error: "Email et OS requis" },
+//         { error: "Tous les champs sont requis" },
 //         { status: 400 }
 //       );
 //     }
@@ -254,30 +242,6 @@ export async function POST(request: Request) {
 //       );
 //     }
 
-//     // Check if email already exists
-//     const existingSignups = await loadSignups();
-//     const emailExists = existingSignups.some(
-//       (signup: BetaSignup) => signup.email.toLowerCase() === email.toLowerCase()
-//     );
-
-//     if (emailExists) {
-//       return NextResponse.json(
-//         { error: "Cet email est déjà inscrit à la beta" },
-//         { status: 409 } // 409 Conflict
-//       );
-//     }
-
-//     // Add new signup
-//     const newSignup: BetaSignup = {
-//       email,
-//       os,
-//       signupDate: new Date().toISOString(),
-//       id: Date.now().toString(),
-//     };
-
-//     existingSignups.push(newSignup);
-//     await saveSignups(existingSignups);
-
 //     // Import Resend dynamically
 //     const { Resend } = await import('resend');
 //     const resend = new Resend(process.env.RESEND_API_KEY);
@@ -287,11 +251,11 @@ export async function POST(request: Request) {
 //       from: 'Qera Beta <onboarding@resend.dev>',
 //       to: ['contact@qerapp.com'],
 //       replyTo: email,
-//       subject: `[Qera Beta] Nouvelle inscription #${existingSignups.length} - ${os.toUpperCase()}`,
+//       subject: `[Qera Beta] Nouvelle inscription - ${os.toUpperCase()}`,
 //       html: `
 //         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
 //           <div style="background-color: #2563eb; color: white; padding: 20px; border-radius: 8px 8px 0 0;">
-//             <h2 style="margin: 0;">🎉 Nouvelle inscription Beta #${existingSignups.length}</h2>
+//             <h2 style="margin: 0;">🎉 Nouvelle inscription Beta</h2>
 //           </div>
           
 //           <div style="background-color: #f3f4f6; padding: 20px;">
@@ -320,6 +284,18 @@ export async function POST(request: Request) {
 //                   </td>
 //                 </tr>
 //                 <tr>
+//                   <td style="padding: 8px 0; font-weight: bold; color: #4b5563;">Pays:</td>
+//                   <td style="padding: 8px 0; color: #1f2937;">
+//                     ${country}
+//                   </td>
+//                 </tr>
+//                 <tr>
+//                   <td style="padding: 8px 0; font-weight: bold; color: #4b5563;">Source:</td>
+//                   <td style="padding: 8px 0; color: #1f2937;">
+//                     ${source}
+//                   </td>
+//                 </tr>
+//                 <tr>
 //                   <td style="padding: 8px 0; font-weight: bold; color: #4b5563;">Date:</td>
 //                   <td style="padding: 8px 0; color: #1f2937;">
 //                     ${new Date().toLocaleString('fr-FR', { 
@@ -328,7 +304,6 @@ export async function POST(request: Request) {
 //                     })}
 //                   </td>
 //                 </tr>
-
 //               </table>
 //             </div>
             
@@ -367,11 +342,36 @@ export async function POST(request: Request) {
 //               </p>
 //             </div>
             
+//             <!-- Download Buttons -->
+//             <div style="background: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%); padding: 25px; border-radius: 12px; margin-bottom: 20px; text-align: center;">
+//               <h3 style="color: white; margin-top: 0; margin-bottom: 15px;">📱 Téléchargez Qera maintenant</h3>
+//               <p style="color: #bfdbfe; font-size: 14px; margin-bottom: 20px;">Commencez dès aujourd'hui à analyser vos produits</p>
+              
+//               <table style="width: 100%; max-width: 500px; margin: 0 auto;" cellpadding="10">
+//                 <tr>
+//                   <td style="padding: 5px;">
+//                     <a href="https://testflight.apple.com/join/tzvz8UXU" 
+//                        style="display: block; background-color: white; color: #1f2937; padding: 15px; 
+//                               border-radius: 12px; text-decoration: none; font-weight: 600;">
+//                       🍎 TestFlight (iOS)
+//                     </a>
+//                   </td>
+//                   <td style="padding: 5px;">
+//                     <a href="https://play.google.com/store/apps/details?id=com.qera.app" 
+//                        style="display: block; background-color: white; color: #1f2937; padding: 15px; 
+//                               border-radius: 12px; text-decoration: none; font-weight: 600;">
+//                       🤖 Google Play
+//                     </a>
+//                   </td>
+//                 </tr>
+//               </table>
+//             </div>
+            
 //             <div style="background-color: white; padding: 25px; border-radius: 8px; margin-bottom: 20px;">
 //               <h3 style="color: #2563eb; margin-top: 0;">📧 Prochaines étapes</h3>
 //               <ol style="color: #4b5563; line-height: 1.8; padding-left: 20px;">
 //                 <li>Surveillez votre boîte email (vérifiez vos spams)</li>
-//                 <li>Téléchargez l'app via le lien que nous vous enverrons</li>
+//                 <li>Téléchargez l'app via les boutons ci-dessus</li>
 //                 <li>Profitez de Qera en avant-première !</li>
 //               </ol>
 //             </div>
@@ -408,4 +408,3 @@ export async function POST(request: Request) {
 //     );
 //   }
 // }
-
