@@ -121,7 +121,7 @@ export async function POST(request: Request) {
           <div style="background:linear-gradient(135deg,rgb(0,60,128),rgb(0,152,217));padding:20px 20px 15px;text-align:center;color:rgb(255,255,255)">
             <!-- QERA Logo placeholder - you can add your logo here -->
             <img 
-              src="https://qerapp.com/images/mg.png" 
+              src="https://qerapp.com/images/logo-no-bg.png" 
               alt="QERA Logo" 
               style="max-width: 180px; height: auto; display: block; margin: 0 auto;"
             />
