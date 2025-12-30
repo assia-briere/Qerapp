@@ -29,7 +29,7 @@ export async function POST(request: Request) {
 
     // Send notification email to admin
     await resend.emails.send({
-      from: 'Qera Beta <onboarding@resend.dev>',
+      from: 'Qera Beta <noreply@qerapp.com>',
       to: ['contact@qerapp.com'],
       replyTo: email,
       subject: `[Qera Beta] Nouvelle inscription - ${os.toUpperCase()}`,
@@ -111,15 +111,20 @@ export async function POST(request: Request) {
     });
 
     // Send welcome email to user (using the template from Model email)
+    // <div style="font-size: 48px; font-weight: bold; color: white; margin-bottom: 10px;">QERA</div>
     await resend.emails.send({
-      from: 'Contact Qera <onboarding@resend.dev>',
+      from: 'Contact Qera <contact@qerapp.com>',
       to: [email],
       subject: 'Bienvenue dans le bêta-test QERA 🚀',
       html: `
         <div dir="ltr">
           <div style="background:linear-gradient(135deg,rgb(0,60,128),rgb(0,152,217));padding:20px 20px 15px;text-align:center;color:rgb(255,255,255)">
             <!-- QERA Logo placeholder - you can add your logo here -->
-            <div style="font-size: 48px; font-weight: bold; color: white; margin-bottom: 10px;">QERA</div>
+            <img 
+              src="https://qerapp.com/images/mg.png" 
+              alt="QERA Logo" 
+              style="max-width: 180px; height: auto; display: block; margin: 0 auto;"
+            />
           </div>
           
           <div style="padding:40px 30px;line-height:1.6">
@@ -217,194 +222,3 @@ export async function POST(request: Request) {
   }
 }
 
-// import { NextResponse } from 'next/server';
-
-// export const dynamic = 'force-dynamic';
-
-// export async function POST(request: Request) {
-//   try {
-//     const { email, os, country, source } = await request.json();
-
-//     // Validate input
-//     if (!email || !os || !country || !source) {
-//       return NextResponse.json(
-//         { error: "Tous les champs sont requis" },
-//         { status: 400 }
-//       );
-//     }
-
-//     // Validate email format
-//     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-//     if (!emailRegex.test(email)) {
-//       return NextResponse.json(
-//         { error: "Adresse email invalide" },
-//         { status: 400 }
-//       );
-//     }
-
-//     // Import Resend dynamically
-//     const { Resend } = await import('resend');
-//     const resend = new Resend(process.env.RESEND_API_KEY);
-
-//     // Send notification email to you
-//     await resend.emails.send({
-//       from: 'Qera Beta <onboarding@resend.dev>',
-//       to: ['contact@qerapp.com'],
-//       replyTo: email,
-//       subject: `[Qera Beta] Nouvelle inscription - ${os.toUpperCase()}`,
-//       html: `
-//         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-//           <div style="background-color: #2563eb; color: white; padding: 20px; border-radius: 8px 8px 0 0;">
-//             <h2 style="margin: 0;">🎉 Nouvelle inscription Beta</h2>
-//           </div>
-          
-//           <div style="background-color: #f3f4f6; padding: 20px;">
-//             <div style="background-color: white; padding: 20px; border-radius: 8px; margin-bottom: 15px;">
-//               <h3 style="margin-top: 0; color: #2563eb;">Informations de l'utilisateur</h3>
-//               <table style="width: 100%; border-collapse: collapse;">
-//                 <tr>
-//                   <td style="padding: 8px 0; font-weight: bold; color: #4b5563;">Email:</td>
-//                   <td style="padding: 8px 0;">
-//                     <a href="mailto:${email}" style="color: #2563eb; text-decoration: none;">
-//                       ${email}
-//                     </a>
-//                   </td>
-//                 </tr>
-//                 <tr>
-//                   <td style="padding: 8px 0; font-weight: bold; color: #4b5563;">Système:</td>
-//                   <td style="padding: 8px 0;">
-//                     <span style="background-color: ${os === 'ios' ? '#e0e7ff' : '#dcfce7'}; 
-//                                  color: ${os === 'ios' ? '#3730a3' : '#166534'}; 
-//                                  padding: 4px 12px; 
-//                                  border-radius: 12px; 
-//                                  font-weight: 600; 
-//                                  font-size: 14px;">
-//                       ${os === 'ios' ? '🍎 iOS' : '🤖 Android'}
-//                     </span>
-//                   </td>
-//                 </tr>
-//                 <tr>
-//                   <td style="padding: 8px 0; font-weight: bold; color: #4b5563;">Pays:</td>
-//                   <td style="padding: 8px 0; color: #1f2937;">
-//                     ${country}
-//                   </td>
-//                 </tr>
-//                 <tr>
-//                   <td style="padding: 8px 0; font-weight: bold; color: #4b5563;">Source:</td>
-//                   <td style="padding: 8px 0; color: #1f2937;">
-//                     ${source}
-//                   </td>
-//                 </tr>
-//                 <tr>
-//                   <td style="padding: 8px 0; font-weight: bold; color: #4b5563;">Date:</td>
-//                   <td style="padding: 8px 0; color: #1f2937;">
-//                     ${new Date().toLocaleString('fr-FR', { 
-//                       dateStyle: 'full', 
-//                       timeStyle: 'short' 
-//                     })}
-//                   </td>
-//                 </tr>
-//               </table>
-//             </div>
-            
-//             <div style="background-color: #dbeafe; padding: 15px; border-radius: 8px; border-left: 4px solid #2563eb;">
-//               <p style="margin: 0; color: #1e40af; font-size: 14px;">
-//                 <strong>💡 Action requise:</strong> Envoyez un email d'accès beta à cet utilisateur dans les 48h.
-//               </p>
-//             </div>
-//           </div>
-          
-//           <div style="margin-top: 20px; padding: 15px; text-align: center;">
-//             <p style="color: #6b7280; font-size: 12px; margin: 0;">
-//               Cette notification a été envoyée automatiquement depuis le formulaire beta de Qera
-//             </p>
-//           </div>
-//         </div>
-//       `,
-//     });
-
-//     // Send confirmation email to the user
-//     await resend.emails.send({
-//       from: 'Qera Beta <onboarding@resend.dev>',
-//       to: [email],
-//       subject: 'Bienvenue dans la beta Qera ! 🎉',
-//       html: `
-//         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-//           <div style="background-color: #2563eb; color: white; padding: 30px; border-radius: 8px 8px 0 0; text-align: center;">
-//             <h1 style="margin: 0; font-size: 32px;">🎉 Bienvenue !</h1>
-//           </div>
-          
-//           <div style="background-color: #f9fafb; padding: 30px;">
-//             <div style="background-color: white; padding: 25px; border-radius: 8px; margin-bottom: 20px;">
-//               <h2 style="color: #1f2937; margin-top: 0;">Merci de votre inscription à la beta Qera</h2>
-//               <p style="color: #4b5563; line-height: 1.6;">
-//                 Nous sommes ravis de vous compter parmi nos premiers utilisateurs ! Vous recevrez vos accès anticipés d'ici <strong>48 heures</strong>.
-//               </p>
-//             </div>
-            
-//             <!-- Download Buttons -->
-//             <div style="background: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%); padding: 25px; border-radius: 12px; margin-bottom: 20px; text-align: center;">
-//               <h3 style="color: white; margin-top: 0; margin-bottom: 15px;">📱 Téléchargez Qera maintenant</h3>
-//               <p style="color: #bfdbfe; font-size: 14px; margin-bottom: 20px;">Commencez dès aujourd'hui à analyser vos produits</p>
-              
-//               <table style="width: 100%; max-width: 500px; margin: 0 auto;" cellpadding="10">
-//                 <tr>
-//                   <td style="padding: 5px;">
-//                     <a href="https://testflight.apple.com/join/tzvz8UXU" 
-//                        style="display: block; background-color: white; color: #1f2937; padding: 15px; 
-//                               border-radius: 12px; text-decoration: none; font-weight: 600;">
-//                       🍎 TestFlight (iOS)
-//                     </a>
-//                   </td>
-//                   <td style="padding: 5px;">
-//                     <a href="https://play.google.com/store/apps/details?id=com.qera.app" 
-//                        style="display: block; background-color: white; color: #1f2937; padding: 15px; 
-//                               border-radius: 12px; text-decoration: none; font-weight: 600;">
-//                       🤖 Google Play
-//                     </a>
-//                   </td>
-//                 </tr>
-//               </table>
-//             </div>
-            
-//             <div style="background-color: white; padding: 25px; border-radius: 8px; margin-bottom: 20px;">
-//               <h3 style="color: #2563eb; margin-top: 0;">📧 Prochaines étapes</h3>
-//               <ol style="color: #4b5563; line-height: 1.8; padding-left: 20px;">
-//                 <li>Surveillez votre boîte email (vérifiez vos spams)</li>
-//                 <li>Téléchargez l'app via les boutons ci-dessus</li>
-//                 <li>Profitez de Qera en avant-première !</li>
-//               </ol>
-//             </div>
-            
-//             <div style="background-color: #dbeafe; padding: 20px; border-radius: 8px; border-left: 4px solid #2563eb;">
-//               <p style="margin: 0; color: #1e40af;">
-//                 <strong>💡 Astuce:</strong> Invitez vos amis pour passer en priorité dans la file d'attente !
-//               </p>
-//             </div>
-//           </div>
-          
-//           <div style="background-color: #f3f4f6; padding: 20px; text-align: center; border-radius: 0 0 8px 8px;">
-//             <p style="color: #6b7280; font-size: 14px; margin: 0 0 10px 0;">
-//               Des questions ? Contactez-nous à <a href="mailto:contact@qerapp.com" style="color: #2563eb;">contact@qerapp.com</a>
-//             </p>
-//             <p style="color: #9ca3af; font-size: 12px; margin: 0;">
-//               © ${new Date().getFullYear()} Qera. Tous droits réservés.
-//             </p>
-//           </div>
-//         </div>
-//       `,
-//     });
-
-//     return NextResponse.json({ 
-//       success: true,
-//       message: 'Inscription réussie' 
-//     });
-
-//   } catch (error) {
-//     console.error('Error processing beta signup:', error);
-//     return NextResponse.json(
-//       { error: 'Erreur serveur' },
-//       { status: 500 }
-//     );
-//   }
-// }
