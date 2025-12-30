@@ -33,6 +33,7 @@ export default function BetaPage() {
     const countriesObj = countries.getNames("fr", { select: "official" });
     return Object.entries(countriesObj)
       .map(([code, name]) => ({ code, name }))
+      .filter(({code})=>code!=="EH")
       .sort((a, b) => a.name.localeCompare(b.name));
   }, []);
 
