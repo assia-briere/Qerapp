@@ -463,12 +463,11 @@ export default function BetaPage() {
                 className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition text-lg bg-white"
               >
                 <option value="">Sélectionnez une option</option>
-                <option value="social_media">Réseaux sociaux (Instagram, Facebook, TikTok)</option>
-                <option value="friend">Recommandation d&apos;un ami</option>
-                <option value="search">Recherche Google</option>
+                <option value="instagram">Instagram</option>
                 <option value="linkedin">LinkedIn</option>
-                <option value="youtube">YouTube</option>
-                <option value="blog">Blog ou article</option>
+                <option value="tiktok">TikTok</option>
+                <option value="L'équipe Qera">L&apos;équipe Qera</option>
+                <option value="friend">Recommandation d&apos;un ami</option>
                 <option value="other">Autre</option>
               </select>
             </div>
