@@ -1,7 +1,14 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 export default function Footer() {
+  const pathname = usePathname();
+
+  const isPolicy = pathname.startsWith("/politique-de-confidentialite");
   return (
     <footer className="w-full border-t border-gray-100 text-black">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 py-10">
@@ -66,9 +73,15 @@ export default function Footer() {
         {/* Bas de footer */}
         <div className="mt-5 flex flex-col sm:flex-row items-center text-sm text-black/70">
           <div className="mb-4 sm:mb-0 sm:mr-140 space-x-4">
-            <a href="/politique-de-confidentialite">
+            <Link
+              href="/politique-de-confidentialite"
+              className={`${isPolicy
+                  ? "text-blue-600 font-semibold underline"
+                  : "text-gray-700 hover:text-blue-600"
+                }`}
+            >
               Politique de confidentialité
-            </a>
+            </Link>
           </div>
           <div className=" text-black/70">
             <p>© {new Date().getFullYear()} Qera. Tous droits réservés.</p>

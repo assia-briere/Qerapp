@@ -466,7 +466,7 @@ export default function BetaPage() {
                 <option value="instagram">Instagram</option>
                 <option value="linkedin">LinkedIn</option>
                 <option value="tiktok">TikTok</option>
-                <option value="L'équipe Qera">L'équipe Qera</option>
+                <option value="L'équipe Qera">L&apos;équipe Qera</option>
                 <option value="friend">Recommandation d&apos;un ami</option>
                 <option value="other">Autre</option>
               </select>
