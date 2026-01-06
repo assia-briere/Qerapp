@@ -44,13 +44,6 @@ export default function Header() {
             </Link>
 
             <Link
-              href="/politique-de-confidentialite"
-              className={`${baseLink} ${isPolicy ? activeLink : ""}`}
-              aria-current={isPolicy ? "page" : undefined}
-            >
-              Privacy Policy
-            </Link>
-            <Link
               href="/contact"
               className={`${baseLink} ${isContact ? activeLink : ""}`}
               aria-current={isContact ? "page" : undefined}
@@ -123,14 +116,6 @@ export default function Header() {
                 L’application
               </Link>
 
-              <Link
-                href="/politique-de-confidentialite"
-                onClick={() => setOpen(false)}
-                className="py-2 text-base font-medium hover:text-[#1565c0]"
-                aria-current={isPolicy ? "page" : undefined}
-              >
-                Politique de confidentialité
-              </Link>
               <Link
               href="/contact"
               className={`${baseLink} ${isContact ? activeLink : ""}`}

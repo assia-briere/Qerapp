@@ -13,25 +13,23 @@ export default function Footer() {
             </h2>
 
             <div className="mt-6 flex items-center gap-4">
-            {/* LinkedIn */}
-            <a
-              href="https://www.linkedin.com/company/qerapp"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-              className="grid size-9 place-items-center rounded-full bg-gray-100 transition hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#1565c0]"
-            >
-              <Image
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/LinkedIn_icon.svg/1024px-LinkedIn_icon.svg.png"
-                alt="LinkedIn"
-                width={18}
-                height={18}
-                className="object-contain"
-              />
-            </a>
+              {/* LinkedIn */}
+              <a
+                href="https://www.linkedin.com/company/qerapp"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="grid size-9 place-items-center rounded-full bg-gray-100 transition hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#1565c0]"
+              >
+                <Image
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/LinkedIn_icon.svg/1024px-LinkedIn_icon.svg.png"
+                  alt="LinkedIn"
+                  width={18}
+                  height={18}
+                  className="object-contain"
+                />
+              </a>
 
-
-              {/* Instagram */}
               {/* Instagram */}
               <a
                 href="https://www.instagram.com/qera_app?igsh=aHVvb3IyanIzdDNw"
@@ -40,13 +38,13 @@ export default function Footer() {
                 aria-label="Instagram"
                 className="grid size-9 place-items-center rounded-full bg-gray-100 transition hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#E1306C]"
               >
-              <Image
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/600px-Instagram_icon.png"
-                alt="Instagram"
-                width={18}
-                height={18}
-                className="object-contain"
-              />
+                <Image
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/600px-Instagram_icon.png"
+                  alt="Instagram"
+                  width={18}
+                  height={18}
+                  className="object-contain"
+                />
               </a>
 
             </div>
@@ -66,8 +64,15 @@ export default function Footer() {
         </div>
 
         {/* Bas de footer */}
-        <div className="mt-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-black/70">
-          <p>© {new Date().getFullYear()} Qera. Tous droits réservés.</p>
+        <div className="mt-5 flex flex-col sm:flex-row items-center text-sm text-black/70">
+          <div className="mb-4 sm:mb-0 sm:mr-140 space-x-4">
+            <a href="/politique-de-confidentialite">
+              Politique de confidentialité
+            </a>
+          </div>
+          <div className=" text-black/70">
+            <p>© {new Date().getFullYear()} Qera. Tous droits réservés.</p>
+          </div>
         </div>
       </div>
     </footer>
