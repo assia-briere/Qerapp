@@ -49,10 +49,14 @@ export async function POST(req: Request) {
       JSON.stringify({ success: true, result: res.data }),
       { status: 200 }
     );
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error("Google Sheet error:", err);
+    let message = "Erreur serveur";
+    if (err instanceof Error) {
+      message = err.message;
+    }
     return new Response(
-      JSON.stringify({ error: "Erreur serveur" }),
+      JSON.stringify({ error: message }),
       { status: 500 }
     );
   }
