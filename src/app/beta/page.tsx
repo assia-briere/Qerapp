@@ -386,214 +386,220 @@ export default function BetaPage() {
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 flex items-center justify-center px-4 py-12">
-      <div className="max-w-xl w-full">
-        {/* Hero Section */}
-        <div className="text-center mb-8">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Rejoignez la bêta de Qera
-          </h1>
-          <p className="text-xl text-gray-600">
-            Soyez parmi les premiers à analyser vos produits et faire les meilleurs choix pour votre santé, budget et planète.
-          </p>
-        </div>
+      <div className="lg:grid lg:grid-cols-3 gap-6">
+        <div className="lg:col-span-2 flex flex-col gap-6">
+          {/* Hero Section */}
+          <div className="text-center mb-8">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Rejoignez la bêta de Qera
+            </h1>
+            <p className="text-xl text-gray-600">
+              Soyez parmi les premiers à analyser vos produits et faire les meilleurs choix pour votre santé, budget et planète.
+            </p>
+          </div>
 
-        {/* Form Card */}
-        <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-10 mb-6">
-          <div className="space-y-6">
-            {/* First Name Field */}
-            <div>
-              <label htmlFor="firstName" className="block text-sm font-semibold text-gray-700 mb-2">
-                Prénom *
-              </label>
-              <input
-                type="text"
-                id="firstName"
-                value={formData.firstName}
-                onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition text-lg"
-                placeholder="Votre prénom"
-              />
-            </div>
-
-            {/* Email Field */}
-            <div>
-              <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
-                Adresse email *
-              </label>
-              <input
-                type="email"
-                id="email"
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition text-lg"
-                placeholder="votre@email.com"
-              />
-            </div>
-
-            {/* OS Selection */}
-            <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-3">
-                Votre système d&apos;exploitation *
-              </label>
-              <div className="grid grid-cols-2 gap-4">
-                <button
-                  type="button"
-                  onClick={() => setFormData({ ...formData, os: "ios" })}
-                  className={`p-4 border-2 rounded-xl transition ${formData.os === "ios"
-                    ? "border-blue-600 bg-blue-50"
-                    : "border-gray-300 hover:border-gray-400"
-                    }`}
-                >
-                  <div className="text-center">
-                    <svg className="w-12 h-12 mx-auto mb-2" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
-                    </svg>
-                    <span className="font-semibold text-gray-900">iOS</span>
-                  </div>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => setFormData({ ...formData, os: "android" })}
-                  className={`p-4 border-2 rounded-xl transition ${formData.os === "android"
-                    ? "border-blue-600 bg-blue-50"
-                    : "border-gray-300 hover:border-gray-400"
-                    }`}
-                >
-                  <div className="text-center">
-                    <svg className="w-12 h-12 mx-auto mb-2 text-green-600" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85-.29-.15-.65-.06-.83.22l-1.88 3.24a11.46 11.46 0 0 0-8.94 0L5.65 5.67c-.19-.28-.55-.37-.83-.22-.3.16-.42.54-.26.85l1.84 3.18C4.8 10.92 3.5 12.62 3.5 14.5h17c0-1.88-1.3-3.58-2.9-5.02M7 13.75c-.41 0-.75-.34-.75-.75s.34-.75.75-.75.75.34.75.75-.34.75-.75.75m10 0c-.41 0-.75-.34-.75-.75s.34-.75.75-.75.75.34.75.75-.34.75-.75.75" />
-                    </svg>
-                    <span className="font-semibold text-gray-900">Android</span>
-                  </div>
-                </button>
+          {/* Form Card */}
+          <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-10 mb-6">
+            <div className="space-y-6">
+              {/* First Name Field */}
+              <div>
+                <label htmlFor="firstName" className="block text-sm font-semibold text-gray-700 mb-2">
+                  Prénom *
+                </label>
+                <input
+                  type="text"
+                  id="firstName"
+                  value={formData.firstName}
+                  onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition text-lg"
+                  placeholder="Votre prénom"
+                />
               </div>
-            </div>
 
-            {/* Country Field */}
-            <div>
-              <label htmlFor="country" className="block text-sm font-semibold text-gray-700 mb-2">
-                Pays *
-              </label>
-              <select
-                id="country"
-                value={formData.country}
-                onChange={(e) => {
-                  setFormData({ ...formData, country: e.target.value });
-                  // Reset otherCountry when changing main selection
-                  if (e.target.value !== "OTHER") {
-                    setOtherCountry("");
-                  }
-                }}
-                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition text-lg bg-white"
-              >
-                <option value="">Sélectionnez votre pays</option>
-                <option value="FR">🇫🇷 France</option>
-                <option value="BE">🇧🇪 Belgique</option>
-                <option value="CH">🇨🇭 Suisse</option>
-                <option value="MA">🇲🇦 Maroc</option>
-                <option value="OTHER">🌍 Autre</option>
-              </select>
+              {/* Email Field */}
+              <div>
+                <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
+                  Adresse email *
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition text-lg"
+                  placeholder="votre@email.com"
+                />
+              </div>
 
-              {/* Conditional dropdown for all countries when "Autre" is selected */}
-              {formData.country === "OTHER" && (
-                <div className="mt-3 animate-in slide-in-from-top-2 duration-200">
-                  <label htmlFor="otherCountry" className="block text-sm font-semibold text-gray-700 mb-2">
-                    Sélectionnez votre pays dans la liste
-                  </label>
-                  <select
-                    id="otherCountry"
-                    value={otherCountry}
-                    onChange={(e) => setOtherCountry(e.target.value)}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition text-lg bg-white"
+              {/* OS Selection */}
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-3">
+                  Votre système d&apos;exploitation *
+                </label>
+                <div className="grid grid-cols-2 gap-4">
+                  <button
+                    type="button"
+                    onClick={() => setFormData({ ...formData, os: "ios" })}
+                    className={`p-4 border-2 rounded-xl transition ${formData.os === "ios"
+                      ? "border-blue-600 bg-blue-50"
+                      : "border-gray-300 hover:border-gray-400"
+                      }`}
                   >
-                    <option value="">Choisissez un pays...</option>
-                    {allCountries.map(({ code, name }) => (
-                      <option key={code} value={code}>
-                        {name}
-                      </option>
-                    ))}
-                  </select>
+                    <div className="text-center">
+                      <svg className="w-12 h-12 mx-auto mb-2" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
+                      </svg>
+                      <span className="font-semibold text-gray-900">iOS</span>
+                    </div>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => setFormData({ ...formData, os: "android" })}
+                    className={`p-4 border-2 rounded-xl transition ${formData.os === "android"
+                      ? "border-blue-600 bg-blue-50"
+                      : "border-gray-300 hover:border-gray-400"
+                      }`}
+                  >
+                    <div className="text-center">
+                      <svg className="w-12 h-12 mx-auto mb-2 text-green-600" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85-.29-.15-.65-.06-.83.22l-1.88 3.24a11.46 11.46 0 0 0-8.94 0L5.65 5.67c-.19-.28-.55-.37-.83-.22-.3.16-.42.54-.26.85l1.84 3.18C4.8 10.92 3.5 12.62 3.5 14.5h17c0-1.88-1.3-3.58-2.9-5.02M7 13.75c-.41 0-.75-.34-.75-.75s.34-.75.75-.75.75.34.75.75-.34.75-.75.75m10 0c-.41 0-.75-.34-.75-.75s.34-.75.75-.75.75.34.75.75-.34.75-.75.75" />
+                      </svg>
+                      <span className="font-semibold text-gray-900">Android</span>
+                    </div>
+                  </button>
+                </div>
+              </div>
+
+              {/* Country Field */}
+              <div>
+                <label htmlFor="country" className="block text-sm font-semibold text-gray-700 mb-2">
+                  Pays *
+                </label>
+                <select
+                  id="country"
+                  value={formData.country}
+                  onChange={(e) => {
+                    setFormData({ ...formData, country: e.target.value });
+                    // Reset otherCountry when changing main selection
+                    if (e.target.value !== "OTHER") {
+                      setOtherCountry("");
+                    }
+                  }}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition text-lg bg-white"
+                >
+                  <option value="">Sélectionnez votre pays</option>
+                  <option value="FR">🇫🇷 France</option>
+                  <option value="BE">🇧🇪 Belgique</option>
+                  <option value="CH">🇨🇭 Suisse</option>
+                  <option value="MA">🇲🇦 Maroc</option>
+                  <option value="OTHER">🌍 Autre</option>
+                </select>
+
+                {/* Conditional dropdown for all countries when "Autre" is selected */}
+                {formData.country === "OTHER" && (
+                  <div className="mt-3 animate-in slide-in-from-top-2 duration-200">
+                    <label htmlFor="otherCountry" className="block text-sm font-semibold text-gray-700 mb-2">
+                      Sélectionnez votre pays dans la liste
+                    </label>
+                    <select
+                      id="otherCountry"
+                      value={otherCountry}
+                      onChange={(e) => setOtherCountry(e.target.value)}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition text-lg bg-white"
+                    >
+                      <option value="">Choisissez un pays...</option>
+                      {allCountries.map(({ code, name }) => (
+                        <option key={code} value={code}>
+                          {name}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                )}
+              </div>
+
+              {/* Source Field */}
+              <div>
+                <label htmlFor="source" className="block text-sm font-semibold text-gray-700 mb-2">
+                  Comment avez-vous entendu parler de Qera ? *
+                </label>
+                <select
+                  id="source"
+                  value={formData.source}
+                  onChange={(e) => setFormData({ ...formData, source: e.target.value })}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition text-lg bg-white"
+                >
+                  <option value="">Sélectionnez une option</option>
+                  <option value="instagram">Instagram</option>
+                  <option value="linkedin">LinkedIn</option>
+                  <option value="tiktok">TikTok</option>
+                  <option value="L'équipe Qera">L&apos;équipe Qera</option>
+                  <option value="friend">Recommandation d&apos;un ami</option>
+                  <option value="other">Autre</option>
+                </select>
+              </div>
+
+              {/* Error Message */}
+              {error && (
+                <div className="p-4 bg-red-50 border border-red-200 rounded-xl text-red-800 text-sm">
+                  {error}
                 </div>
               )}
-            </div>
 
-            {/* Source Field */}
-            <div>
-              <label htmlFor="source" className="block text-sm font-semibold text-gray-700 mb-2">
-                Comment avez-vous entendu parler de Qera ? *
-              </label>
-              <select
-                id="source"
-                value={formData.source}
-                onChange={(e) => setFormData({ ...formData, source: e.target.value })}
-                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition text-lg bg-white"
+              {/* Submit Button */}
+              <button
+                onClick={handleSubmit}
+                disabled={isSubmitting}
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-6 rounded-xl transition duration-200 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl text-lg"
               >
-                <option value="">Sélectionnez une option</option>
-                <option value="instagram">Instagram</option>
-                <option value="linkedin">LinkedIn</option>
-                <option value="tiktok">TikTok</option>
-                <option value="L'équipe Qera">L&apos;équipe Qera</option>
-                <option value="friend">Recommandation d&apos;un ami</option>
-                <option value="other">Autre</option>
-              </select>
+                {isSubmitting ? "Inscription en cours..." : "Rejoindre la bêta"}
+              </button>
             </div>
-
-            {/* Error Message */}
-            {error && (
-              <div className="p-4 bg-red-50 border border-red-200 rounded-xl text-red-800 text-sm">
-                {error}
-              </div>
-            )}
-
-            {/* Submit Button */}
-            <button
-              onClick={handleSubmit}
-              disabled={isSubmitting}
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-6 rounded-xl transition duration-200 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl text-lg"
-            >
-              {isSubmitting ? "Inscription en cours..." : "Rejoindre la bêta"}
-            </button>
           </div>
-        </div>
 
+        </div>
         {/* Trust Block */}
-        <div className="bg-white/80 backdrop-blur rounded-2xl p-6 border border-gray-200">
-          <div className="flex items-start gap-3 mb-4">
-            <svg className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-            </svg>
-            <div className="flex-1">
-              <h3 className="font-semibold text-gray-900 mb-2">Votre vie privée est protégée</h3>
-              <ul className="space-y-2 text-sm text-gray-600">
-                <li className="flex items-start">
-                  <svg className="w-5 h-5 text-green-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>Photos non stockées sur nos serveurs</span>
-                </li>
-                <li className="flex items-start">
-                  <svg className="w-5 h-5 text-green-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>Préférences stockées sur votre appareil</span>
-                </li>
-                <li className="flex items-start">
-                  <svg className="w-5 h-5 text-green-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>Données personnelles jamais revendues</span>
-                </li>
-              </ul>
-              <a
-                href="/politique-de-confidentialite"
-                className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium text-sm mt-3"
-              >
-                En savoir plus
-                <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+        <div className="hidden lg:block">
+          <div className="sticky top-6">
+            <div className="bg-white/80 backdrop-blur rounded-2xl p-6 border border-gray-200">
+              <div className="flex items-start gap-3 mb-4">
+                <svg className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                 </svg>
-              </a>
+                <div className="flex-1">
+                  <h3 className="font-semibold text-gray-900 mb-2">Votre vie privée est protégée</h3>
+                  <ul className="space-y-2 text-sm text-gray-600">
+                    <li className="flex items-start">
+                      <svg className="w-5 h-5 text-green-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span>Photos non stockées sur nos serveurs</span>
+                    </li>
+                    <li className="flex items-start">
+                      <svg className="w-5 h-5 text-green-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span>Préférences stockées sur votre appareil</span>
+                    </li>
+                    <li className="flex items-start">
+                      <svg className="w-5 h-5 text-green-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span>Données personnelles jamais revendues</span>
+                    </li>
+                  </ul>
+                  <a
+                    href="/politique-de-confidentialite"
+                    className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium text-sm mt-3"
+                  >
+                    En savoir plus
+                    <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
