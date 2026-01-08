@@ -10,7 +10,6 @@ export default function Header() {
   const pathname = usePathname();
 
   const isHome = pathname === "/";
-  const isPolicy = pathname.startsWith("/politique-de-confidentialite");
   const isContact = pathname.startsWith("/contact");
 
   const baseLink =
