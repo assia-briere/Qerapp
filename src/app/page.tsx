@@ -6,6 +6,7 @@ import React from "react";
 import Image from "next/image";
 import PourquoiQera from "@/components/pourquoiQera";
 import SimpleRapideIntuitif from "@/components/simple";
+import Link from "next/link";
 
 const WAITLIST_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLSc9KLE1StFrBnBZH6HHPXBDJsaXVwxv5bbMmpzBvPDEN9ODMw/viewform?usp=header";
@@ -46,13 +47,13 @@ export default function Page() {
                 <span className="font-semibold text-[#1565c0]"> environnement </span>.
               </p>
               <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-3">
-                {/* <Link
+                <Link
                   href="/beta"
                   className="rounded-full bg-[#1565c0] px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#1976d2] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#1565c0]"
                 >
                   Rejoindre la bêta
-                </Link> */}
-                <a
+                </Link>
+                {/*<a
                   href={WAITLIST_URL}
                   rel="noopener noreferrer"
                   target="_blank"
@@ -60,7 +61,7 @@ export default function Page() {
                   className="rounded-full bg-[#1565c0] px-5 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-[#1976d2] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#1565c0]"
                 >
                   Rejoindre la bêta
-                </a>
+                </a>*/}
               </div>
             </div>
             <div className="relative mx-auto h-[260px] w-[260px] md:h-[340px] md:w-[340px]">
