@@ -560,7 +560,7 @@ export default function BetaPage() {
 
         </div>
         {/* Trust Block */}
-        <div className="hidden lg:block">
+        <div className="block">
           <div className="sticky top-6">
             <div className="bg-white/80 backdrop-blur rounded-2xl p-6 border border-gray-200">
               <div className="flex items-start gap-3 mb-4">
