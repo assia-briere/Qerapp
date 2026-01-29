@@ -142,29 +142,53 @@ export async function POST(request: Request) {
                 </font>
               </p>
               
-              <p><b><font face="arial, sans-serif" color="#000000">Commencez dès maintenant :</font></b></p>
+              <p><b><font face="arial, sans-serif" color="#000000">Telechargez dès maintenant :</font></b></p>
               
               <ul>
-                <li style="margin-left:15px">
-                     Télécharger l'application QERA sur :<br><br>
-                  <a href="https://play.google.com/store/apps/details?id=com.qera.app" target="_blank">
-                     <img 
-                      src="https://qerapp.com/images/android.png"
-                      alt="Télécharger sur Google Play" 
-                      width="150"
-                      style="display:block;border:0;outline:none;text-decoration:none;"
-                      />      
-                   </a>
-                  <br><br>
-                  <a href="https://testflight.apple.com/join/tzvz8UXU" target="_blank">
-                      <img 
-                      src="https://qerapp.com/images/social.png"
-                      alt="Télécharger sur l'App Store" 
-                      width="150"
-                      style="display:block;border:0;outline:none;text-decoration:none;"
-                      />    
-                   </a>
-                </li>
+               <table width="100%" cellpadding="0" cellspacing="0" style="margin:20px 0; background: linear-gradient(135deg, #2563eb, #3b82f6); padding: 20px; border-radius: 12px;">
+               <tr>
+               <td align="center">
+
+               <table cellpadding="0" cellspacing="0">
+               <tr>
+               <td style="padding-right:6px;">
+               <a href="https://testflight.apple.com/join/tzvz8UXU"
+                      style="display:inline-block;
+                      background:#ffffff;
+                      color:#000;
+                      text-decoration:none;
+                      padding:18px 28px;
+                      border-radius:12px;
+                      font-weight:bold;
+                      font-family:Arial,sans-serif;
+                      box-shadow:0 4px 12px rgba(0,0,0,0.2);
+                      font-size:16px;">
+                   <img src="https://qerapp.com/images/sociale.png" alt="Apple Logo" style="height:20px; vertical-align:middle; margin-right:10px;">
+                      TestFlight (iOS)
+               </a>
+               </td>
+               <td style="padding-left:6px;">
+               <a href="https://play.google.com/store/apps/details?id=com.qera.app"
+                      style="display:inline-block;
+                      background:#ffffff;
+                      color:#000;
+                      text-decoration:none;
+                      padding:18px 28px;
+                      border-radius:12px;
+                      font-weight:bold;
+                      font-family:Arial,sans-serif;
+                      box-shadow:0 4px 12px rgba(0,0,0,0.2);
+                      font-size:16px;">
+                  <img src="https://qerapp.com/images/android.png" alt="Google Play Logo" style="height:20px; vertical-align:middle; margin-right:10px;">
+                     Google Play
+                 </a>
+                </td>
+               </tr>
+               </table>
+               </td>
+               </tr>
+               </table>
+               
                 <li style="margin-left:15px">
                   Testez les fonctionnalités : scan des produits et comparaisons selon vos critères (prix, nutrition, écologie, allergies)
                 </li>
