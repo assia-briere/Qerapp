@@ -85,10 +85,10 @@ export async function POST(request: Request) {
                 <tr>
                   <td style="padding: 8px 0; font-weight: bold; color: #4b5563;">Date:</td>
                   <td style="padding: 8px 0; color: #1f2937;">
-                    ${new Date().toLocaleString('fr-FR', { 
-                      dateStyle: 'full', 
-                      timeStyle: 'short' 
-                    })}
+                    ${new Date().toLocaleString('fr-FR', {
+        dateStyle: 'full',
+        timeStyle: 'short'
+      })}
                   </td>
                 </tr>
               </table>
@@ -146,9 +146,24 @@ export async function POST(request: Request) {
               
               <ul>
                 <li style="margin-left:15px">
-                  Télécharger l'application QERA sur :<br>
-                  Android : 📲  <a href="https://play.google.com/store/apps/details?id=com.qera.app" target="_blank">https://play.google.com/store/apps/details?id=com.qera.app</a><br>
-                  IOS :  📲  <a href="https://testflight.apple.com/join/tzvz8UXU">https://testflight.apple.com/join/tzvz8UXU</a>
+                     Télécharger l'application QERA sur :<br><br>
+                  <a href="https://play.google.com/store/apps/details?id=com.qera.app" target="_blank">
+                     <img 
+                      src="https://qerapp.com/images/android.png"
+                      alt="Télécharger sur Google Play" 
+                      width="150"
+                      style="display:block;border:0;outline:none;text-decoration:none;"
+                      />      
+                   </a>
+                  <br><br>
+                  <a href="https://testflight.apple.com/join/tzvz8UXU" target="_blank">
+                      <img 
+                      src="https://qerapp.com/images/social.png"
+                      alt="Télécharger sur l'App Store" 
+                      width="150"
+                      style="display:block;border:0;outline:none;text-decoration:none;"
+                      />    
+                   </a>
                 </li>
                 <li style="margin-left:15px">
                   Testez les fonctionnalités : scan des produits et comparaisons selon vos critères (prix, nutrition, écologie, allergies)
@@ -166,7 +181,9 @@ export async function POST(request: Request) {
               <p><b><font face="arial, sans-serif" color="#000000">Ce que vous trouverez dans ce mail :</font></b></p>
               <ul>
                 <li style="margin-left:15px">
-                  <p><font face="arial, sans-serif" color="#000000">Guide QERA pour découvrir l'application et ses fonctionnalités</font></p>
+                  <p><font face="arial, sans-serif" color="#000000">Guide QERA pour découvrir l'application et ses fonctionnalités :</font>
+                  <a href="https://drive.google.com/file/d/1RxlyTGJu7jdzqco7wCKNL2J-LSTtg36s/view?usp=sharing" target="_blank">Voir le guide</a>
+                  </p>
                 </li>
                 <li style="margin-left:15px">
                   <p><font face="arial, sans-serif" color="#000000">Image test pour scanner et tester depuis chez vous</font></p>
@@ -208,9 +225,9 @@ export async function POST(request: Request) {
       `,
     });
 
-    return NextResponse.json({ 
+    return NextResponse.json({
       success: true,
-      message: 'Inscription réussie' 
+      message: 'Inscription réussie'
     });
 
   } catch (error) {
