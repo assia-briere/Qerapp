@@ -32,7 +32,7 @@ export async function POST(req: Request) {
       os,
       country,
       source,
-      new Date().toISOString(), // date
+      new Date().toISOString(),
     ];
 
     const res = await sheets.spreadsheets.values.append({
