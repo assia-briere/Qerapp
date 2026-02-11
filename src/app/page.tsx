@@ -15,7 +15,7 @@ export default function Page() {
 
   const handleWaitlistClick = () => {
     console.log('🔵 Button clicked!'); // Debug log
-    
+
     // Track the click event
     if (typeof window !== 'undefined' && window.dataLayer) {
       console.log('🟢 Pushing waitlist_click event'); // Debug log
@@ -42,7 +42,7 @@ export default function Page() {
                 Prenez une photo et comparez selon vos priorités :
                 <span className="font-semibold text-[#1565c0]"> santé </span>,
                 <span className="font-semibold text-[#1565c0]"> budget </span>,
-                <span className="font-semibold text-[#1565c0]"> allergies </span> 
+                <span className="font-semibold text-[#1565c0]"> allergies </span>
                 <span>et,</span>
                 <span className="font-semibold text-[#1565c0]"> environnement </span>.
               </p>
@@ -64,16 +64,25 @@ export default function Page() {
                 </a>*/}
               </div>
             </div>
-            <div className="relative mx-auto h-[260px] w-[260px] md:h-[340px] md:w-[340px]">
-              <Image
-                src="/images/test1.png"
-                alt="Logo Qera"
-                fill
-                sizes="(max-width: 900px) 360px, 340px"
-                className="object-contain"
-                priority
-              />
+
+            <div className="w-full flex justify-end ">
+            <div className="mr-37">
+              <div className="w-[200px] md:w-[240px] aspect-[9/16] rounded-xl overflow-hidden shadow-lg relative bg-black">
+                <video
+                  src="/reel/reel.mp4"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="auto"
+                  disablePictureInPicture
+                  controls={false}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              </div>
             </div>
+
           </div>
         </div>
       </section>
@@ -86,6 +95,6 @@ export default function Page() {
         aspect="aspect-[5/4]"
         sizes="(max-width:768px) 90vw, 520px"
       />
-    </main>
+    </main >
   );
 }
